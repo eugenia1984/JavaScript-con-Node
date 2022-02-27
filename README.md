@@ -11,7 +11,12 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 :star: Variables -> [https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js](https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js)
 
-:star: Operadores -> [https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js](https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js)
+:star: Operatores -> [https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js](https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js)
+
+
+:star: [Practice eExercises](https://eugenia1984.github.io/JavaScript-con-Node/04_ejercicios_de_practica.js)
+
+:star: [Flow control](https://eugenia1984.github.io/JavaScript-con-Node/05_control_de_flujo.js)
 
 ---
 
@@ -57,7 +62,11 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 
 :star: Variables -> [https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js](https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js)
 
-:star: Operadores -> [https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js](https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js)
+:star: Operadores: de asignación ( =, +=, -=, *=, /=, %=, **=), de comparación (>, >=, <, <=, !=, !==, ==, ===), incremento (++), decremento (--), lógicos (&&, ||, !), concatenacion (+), ternario, desestructuración, typeof -> [https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js](https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js)
+
+:star: [Ejercicios de practica](https://eugenia1984.github.io/JavaScript-con-Node/04_ejercicios_de_practica.js)
+
+:star: Control de flujo: if, if - else, if - else if - else, switch -> [Control de flujo](https://eugenia1984.github.io/JavaScript-con-Node/05_control_de_flujo.js)
 
 ## Tecnologías 🛠️
 

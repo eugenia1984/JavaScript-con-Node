@@ -91,3 +91,77 @@ console.log(numeroDecremento);  // 6
 
 
 /***** Operadores logicos *******/
+
+// AND: &&
+// Ambos deben ser True para que el resultado dea true
+console.log(true && true); // true
+console.log(2 >3 && 1 <=2);  // false <= false && true
+
+// OR: ||
+// Con que al menos uno sea true, entonces el valor resultante es verdadero
+console.log(true || false);  // true
+// Solo es false si ambos son false
+console.log(false || false);  // false
+
+// NOT
+// es la negacion de un valor
+console.log(!true);  // false
+
+/**** Operador de cadena - concatenacion : + *****/
+let saludo1 = 'Hola.';
+let saludo2 = 'Buen dia';
+let saludo3 = saludo1 + " "+ saludo2;
+console.log(saludo3); // Hola. Buen día
+
+/**** Operador condicional - ternario ****/
+// concicion ? valorPorTrue : valorPorFalse
+let edadAEvaluar =  20;
+console.log(edadAEvaluar >= 18 ? 'Eres mayor de edad' : 'Eres menor de edad');
+ 
+/**** Operador de desestructuracion ****/
+
+let persona = {
+  nombre: 'Maria Eugenia',
+  apellido: 'Costa'
+};
+
+let {nombre, apellido} = persona;
+console.log(nombre);
+console.log(apellido);
+// En el caso de que ya tenga en mi programa otra varaible con el mismo identificador que el atributo del objeto, puedo renombrarla con los :
+let {nombre:firstName, apellido:lastName} = persona;
+console.log(firstName);
+console.log(lastName);
+
+/**** Operador de desestructuracion de arreglos ****/
+let arreglo = [1, 2, 3, 4, 5, 6, 7, 8];
+// para desestructurar items dentro de un arreglo
+let [primeraPosicion, segundaPosicion] = arreglo;
+console.log(primeraPosicion); //1
+console.log(segundaPosicion); //2
+
+/*** Operador de miembro o acceso de propiedad ****/
+let persona2 = {
+  nombre: 'Candela',
+  apellido: 'Gomez'
+};
+// dot notation
+console.log(persona2.nombre); // Candela
+
+// notacion []
+// entre los [] como String aclaro que atributo quiero
+console.log(persona2['apellido']);  // Gomez
+
+// notacion con [] en arrays, recordar que los indices empiezan desde 0
+
+let diasDeFinDeSemana = ['Sabado', 'Domingo'];
+console.log(diasDeFinDeSamana[1]);  // Domingo
+
+/**** Operador de determinacion de tipo: typeof ****/
+// Para saber que tipo de dato es
+console.log(typeof 'Hola');  // String
+console.log(typeof 50);  // Number
+console.log(typeof true);  // Boolean
+
+
+
