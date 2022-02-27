@@ -18,6 +18,11 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 :star: [Flow control](https://eugenia1984.github.io/JavaScript-con-Node/05_control_de_flujo.js)
 
+:star: [Loops](https://eugenia1984.github.io/JavaScript-con-Node/06_ciclos.js)
+
+:star: [Functions](https://eugenia1984.github.io/JavaScript-con-Node/07_funciones.js)
+
+
 ---
 
 ## Stack of technologies?  🛠️
@@ -69,6 +74,8 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 :star: Control de flujo: if, if - else, if - else if - else, switch -> [Control de flujo](https://eugenia1984.github.io/JavaScript-con-Node/05_control_de_flujo.js)
 
 :star: Ciclos: while, do - while, for, for in, for of -> [Ciclos](https://eugenia1984.github.io/JavaScript-con-Node/06_ciclos.js)
+
+:star: [Funciones](https://eugenia1984.github.io/JavaScript-con-Node/07_funciones.js)
 
 ## Tecnologías 🛠️
 
