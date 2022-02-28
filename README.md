@@ -6,15 +6,15 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 ##  What are you going to see ?
 
-:star: The different kind of date in JavaScript -> [https://eugenia1984.github.io/JavaScript-con-Node/01_tipo_de_datos.js](https://eugenia1984.github.io/JavaScript-con-Node/01_tipo_de_datos.js)
+:star: [The different kind of data in JavaScript](https://eugenia1984.github.io/JavaScript-con-Node/01_tipo_de_datos.js)
 
 
-:star: Variables -> [https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js](https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js)
+:star: [Variables](https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js)
 
-:star: Operatores -> [https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js](https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js)
+:star:  [Operators](https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js)
 
 
-:star: [Practice eExercises](https://eugenia1984.github.io/JavaScript-con-Node/04_ejercicios_de_practica.js)
+:star: [Practice Exercises](https://eugenia1984.github.io/JavaScript-con-Node/04_ejercicios_de_practica.js)
 
 :star: [Flow control](https://eugenia1984.github.io/JavaScript-con-Node/05_control_de_flujo.js)
 
@@ -22,6 +22,7 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 :star: [Functions](https://eugenia1984.github.io/JavaScript-con-Node/07_funciones.js)
 
+:star: [Methods of Arrays](https://eugenia1984.github.io/JavaScript-con-Node/08_manipulacion_arrays.js) -> ForEach, push, pop, shift, map, filter, reduce, some, every, find, findIndex, includes, join, concat, sort, slice, splice
 
 ---
 
@@ -63,19 +64,22 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 
 ##  ¿ Qué verás ?
 
-:star: Los tipos de datos en JavaScript -> [https://eugenia1984.github.io/JavaScript-con-Node/01_tipo_de_datos.js](https://eugenia1984.github.io/JavaScript-con-Node/01_tipo_de_datos.js)
+:star:  [Los tipos de datos en JavaScript](https://eugenia1984.github.io/JavaScript-con-Node/01_tipo_de_datos.js)
 
-:star: Variables -> [https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js](https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js)
+:star: [Variables](https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js)
 
-:star: Operadores: de asignación ( =, +=, -=, *=, /=, %=, **=), de comparación (>, >=, <, <=, !=, !==, ==, ===), incremento (++), decremento (--), lógicos (&&, ||, !), concatenacion (+), ternario, desestructuración, typeof -> [https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js](https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js)
+:star:  [Operadores](https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js) -> de asignación ( =, +=, -=, *=, /=, %=, **=), de comparación (>, >=, <, <=, !=, !==, ==, ===), incremento (++), decremento (--), lógicos (&&, ||, !), concatenacion (+), ternario, desestructuración, typeof 
 
 :star: [Ejercicios de practica](https://eugenia1984.github.io/JavaScript-con-Node/04_ejercicios_de_practica.js)
 
-:star: Control de flujo: if, if - else, if - else if - else, switch -> [Control de flujo](https://eugenia1984.github.io/JavaScript-con-Node/05_control_de_flujo.js)
+:star:  [Control de flujo](https://eugenia1984.github.io/JavaScript-con-Node/05_control_de_flujo.js) -> if, if - else, if - else if - else, switch
 
-:star: Ciclos: while, do - while, for, for in, for of -> [Ciclos](https://eugenia1984.github.io/JavaScript-con-Node/06_ciclos.js)
+:star:  [Ciclos](https://eugenia1984.github.io/JavaScript-con-Node/06_ciclos.js) -> while, do - while, for, for in, for of
 
 :star: [Funciones](https://eugenia1984.github.io/JavaScript-con-Node/07_funciones.js)
+
+:star: [Manipulacion de arrays](https://eugenia1984.github.io/JavaScript-con-Node/08_manipulacion_arrays.js) -> ForEach, push, pop, shift, map, filter, reduce, some, every, find, findIndex, includes, join, concat, sort, slice, splice
+
 
 ## Tecnologías 🛠️
 
