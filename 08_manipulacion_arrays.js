@@ -240,9 +240,55 @@ console.log(resultado3);
 */
 
 
-/***  ***/
+/*** Some - Every ***/
+// Con some verifico si al menos un elemento dle array cumple con una condicion especifica, si al menos uno lo cumple retorna true.
+// Paca every necesito que todos los elementos del array cumplan con la condicion para que me retorne true
+const numerosUnoAlDiez = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-/***  ***/
+// Quiero verificar si al menos uno de los elementos del array numerosUnoAlDiez es un numero par
+const resultado4 = numerosUnoAlDiez.some( (numero) => numero % 2 === 0);
+console.log(resultado4);  // true
+
+// Quiero ver si todos los elementos del array numerosUnoAlDiez son pares
+const resultado5 = numerosUnoAlDiez.every( (numero) => numero % 2 === 0 );
+console.log(resultado5);  // false, porque no todos los elmentos son pares
+
+/*** Find - FindIndex ***/
+/*
+FIND...
+... busca un elemento dentro de un array que coincida con cierta condicion y lo retorna. 
+... es una funcion inmutable, no me modifia el array en el que busco.
+... me va a retornar el primer elemento que coincida con la busqueda, si tengo más de uno, solo voy a saber el primero.
+... si no encuentra ningun elemento que coincida con la condicion retorna undefined.
+... la diferencia con filter: FIND retorna un unico elemento y FILTER retorna un array con los elementos que coinciden en la busqueda- 
+*/ 
+
+// Ejemplo de .find() con un array de clientes, con las propiedades : id y nombre
+const clientes = [
+  {id: 1, nombre: 'Ada'},
+  {id: 2, nombre: 'Katrina'},
+  {id: 3, nombre: 'Dayana'},
+  {id: 4, nombre: 'Pamela'},
+  {id: 5, nombre: 'Michelle'}
+];
+// Necesito buscar un unico elemento en el array, un cliente con id 1
+const clienteConFind = clientes.find( (cliente) => cliente.id === 1);
+console.log(clienteConFind);  // { id: 1, nombre: 'Ada' }
+// Lo hago con filter (me retorna un array) para ver la diferencia con find (solo me retorna el primero encontrado).
+const clienteConFilter = clientes.filter( (cliente) => cliente.id === 1);
+console.log(clienteConFilter);  // [ { id: 1, nombre: 'Ada' } ]
+
+/*
+FINDINDEX...
+... retorna la posicion del elemento del array que coincida con cierta condicion.
+... devuelve un unico valor.
+*/ 
+
+// Con .findIndex() busco en que posicion tengo al cliente con el id 2
+const posicion = clientes.findIndex( (cliente) => cliente.id === 2 );
+console.log(posicion); // 1
+// Para obetener el elemento
+console.log(clientes[posicion]);  // { id: 2, nombre: 'Katrina' }
 
 /***  ***/
 
