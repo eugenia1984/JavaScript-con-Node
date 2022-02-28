@@ -290,6 +290,109 @@ console.log(posicion); // 1
 // Para obetener el elemento
 console.log(clientes[posicion]);  // { id: 2, nombre: 'Katrina' }
 
+/*** Includes ***/
+/*
+INCLUDES...
+... para determinar si en un arreglo existe un elemento en específico y retorna : true o false.
+... como parametro recibe el valor a verificar (no recibe una funcion).
+*/
+
+// Ejemplo con un array de mascotas
+const mascotas = ['perro', 'gato', 'conejo'];
+// Voy a ver si tengo un gato como mascota
+const resultado6 = mascotas.includes('gato');
+console.log(resultado6);  // true
+
+// Como includes() maneja String puedo ver si una palabra tiene determinada letra, por ejemplo:
+console.log('Eugenia'.includes('i'));  // true
+console.log('Eugenia'.includes('s'));  // false
+
+// Se puede combinar .includes() con .filter() para hacer un ejercicio de un buscador
+const buscador = (parametro) => {
+  let clientes = [
+    {id: 1, nombre: 'Ada'},
+    {id: 2, nombre: 'Katrina'},
+    {id: 3, nombre: 'Dayana'},
+    {id: 4, nombre: 'Pamela'},
+    {id: 5, nombre: 'Michelle'}
+  ];
+  return clientes.filter( (cliente) => cliente.nombre.includes(parametro));
+}
+console.log(buscador('a')); // Para buscar los nombres que contengan la letra a
+/*
+[
+  { id: 1, nombre: 'Ada' },
+  { id: 2, nombre: 'Katrina' },
+  { id: 3, nombre: 'Dayana' },
+  { id: 4, nombre: 'Pamela' }
+]
+*/
+console.log(buscador('na')); // Para buscar los nombres que contengan na
+/*
+[ { id: 2, nombre: 'Katrina' }, { id: 3, nombre: 'Dayana' } ]
+*/
+
+/*** Join ***/
+/*
+JOIN...
+... metodo que nos ajuda a unir todos los elementos de un array y generar un string a partir de esa union.
+... puede o no recibir parametros. Si no recibe parametros, me genera el string separado por COMA. Si recibe un prametro, el string va a estar separado por el caracter indicado como parametro.
+... se utiliza mucho para generar archivos .csv, porque son datos separados por COMA y se pueden ver con excel.
+*/
+
+const elementosAJoinnear = ['aire', 'fuego', 'agua'];
+const resultado7 = elementosAJoinnear.join();
+console.log(resultado7);  // aire,fuego,agua
+const resultado8 = elementosAJoinnear.join('--');
+console.log(resultado8);  // aire--fuego--agua
+
+// Vemos que pasa si hago un join a un array de objetos
+const clientes2 = [
+  {id: 1, nombre: 'Ada'},
+  {id: 2, nombre: 'Katrina'},
+  {id: 3, nombre: 'Dayana'},
+  {id: 4, nombre: 'Pamela'},
+  {id: 5, nombre: 'Michelle'}
+];
+
+console.log(clientes2.join()); //[object Object],[object Object],[object Object],[object Object],[object Object]
+
+// no me convierte el objeto a un String, sino que utiliza Object Object para identificar que se une un objeto, porque join no puede convertir un array de objectos a un String. Debería aplicar .map() para obetener los datos de cada objeto y posteriormete hacer un .join()
+// Lo veo con un ejemplo en codigo, generando una funcion llamada csvGenerator. Con separador=',' establezco la coma como el valor por defecto, asi de no pasarme un separador voy a usar la coma.
+
+const csvGenerator = (array, separator=',') => {
+  // para obetener las cabeceras utilizo Object.keys()
+  let headers = Object.keys(array[0]).join(separator);
+  // Para obetener de cada  objeto el valor del id y del nombre utilizo Object.values()
+  let data = array.map( (element) => Object.values(element).join(separator));
+  console.log(headers);
+  data.forEach(element => console.log(element));
+};
+
+csvGenerator(clientes2);
+/*
+id,nombre
+1,Ada
+2,Katrina
+3,Dayana
+4,Pamela
+5,Michelle
+*/
+
+// con Object.values() obtengo los valores (value) de la propiedad de un objeto, aca lo veo en un ejemplo
+console.log(Object.values({id: 5, nombre: 'Michelle'}));  // [5, 'Michelle'}]
+
+// con Object.keys() obtengo las propiedad (key) de un objeto, aca lo veo en un ejemplo
+console.log(Object.keys({id: 5, nombre: 'Michelle'}));  // ['id', 'nombre'}]
+
+/***  ***/
+
+/***  ***/
+
+/***  ***/
+
+/***  ***/
+
 /***  ***/
 
 /***  ***/
