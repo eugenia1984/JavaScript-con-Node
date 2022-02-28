@@ -9,20 +9,23 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 :star: [The different kind of data in JavaScript](https://eugenia1984.github.io/JavaScript-con-Node/01_tipo_de_datos.js)
 
 
-:star: [Variables](https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js)
+:star: [Variables](https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js)  -> var, let, const
 
 :star:  [Operators](https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js)
 
 
 :star: [Practice Exercises](https://eugenia1984.github.io/JavaScript-con-Node/04_ejercicios_de_practica.js)
 
-:star: [Flow control](https://eugenia1984.github.io/JavaScript-con-Node/05_control_de_flujo.js)
+:star: [Flow control](https://eugenia1984.github.io/JavaScript-con-Node/05_control_de_flujo.js)  -> if, if - else, if - else if - else, switch
 
-:star: [Loops](https://eugenia1984.github.io/JavaScript-con-Node/06_ciclos.js)
+:star: [Loops](https://eugenia1984.github.io/JavaScript-con-Node/06_ciclos.js) -> while, do - while, for, for in, for of
 
 :star: [Functions](https://eugenia1984.github.io/JavaScript-con-Node/07_funciones.js)
 
 :star: [Methods of Arrays](https://eugenia1984.github.io/JavaScript-con-Node/08_manipulacion_arrays.js) -> ForEach, push, pop, shift, map, filter, reduce, some, every, find, findIndex, includes, join, concat, sort, slice, splice
+
+:star: [Asynhrony](https://eugenia1984.github.io/JavaScript-con-Node/09_asincronismo.js) -> callbacks, then-catch , sync-await
+
 
 ---
 
@@ -30,12 +33,11 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 **HTML5** , **CSS3**, **JavaScript** & **Node**.
 
+*Tip* : if you use *Visual Studio Code* you can install the extension called **Code Runner**, so you can select the JavaScript code to run and view it directly from the VSC console.
 
 ## Demo 📦
 
-If you want to see how this project was, you can do it from:
-
-:arrow_right:   [https://eugenia1984.github.io/JavaScript-con-Node](https://eugenia1984.github.io/JavaScript-con-Node)
+If you want to see how this project was, you can do it from ->   [https://eugenia1984.github.io/JavaScript-con-Node](https://eugenia1984.github.io/JavaScript-con-Node)
  
 
 
@@ -64,9 +66,9 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 
 ##  ¿ Qué verás ?
 
-:star:  [Los tipos de datos en JavaScript](https://eugenia1984.github.io/JavaScript-con-Node/01_tipo_de_datos.js)
+:star:  [Los tipos de datos en JavaScript](https://eugenia1984.github.io/JavaScript-con-Node/01_tipo_de_datos.js) -> primitivos y compuestos
 
-:star: [Variables](https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js)
+:star: [Variables](https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js) -> var, let, const
 
 :star:  [Operadores](https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js) -> de asignación ( =, +=, -=, *=, /=, %=, **=), de comparación (>, >=, <, <=, !=, !==, ==, ===), incremento (++), decremento (--), lógicos (&&, ||, !), concatenacion (+), ternario, desestructuración, typeof 
 
@@ -80,17 +82,18 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 
 :star: [Manipulacion de arrays](https://eugenia1984.github.io/JavaScript-con-Node/08_manipulacion_arrays.js) -> ForEach, push, pop, shift, map, filter, reduce, some, every, find, findIndex, includes, join, concat, sort, slice, splice
 
+:star: [Asincronismo](https://eugenia1984.github.io/JavaScript-con-Node/09_asincronismo.js) -> callbacks, then-catch , sync-await
+
 
 ## Tecnologías 🛠️
 
 **HTML5**, **CSS3**,  **JavaScript** & **Nodejs**
 
+*Tip* : si utilizas *Visual Studio Code* te podes instalar la extension llamada **Code Runner**, asi podes seleccionar el codigo JavaScript a ejecutar y lo vez directamente desde la consola de VSC.
 
 ## Demo 📦
 
-Si quieres ver cómo fue este proyecto, puedes hacerlo desde:
-
-: arrow_right: [https://eugenia1984.github.io/JavaScript-con-Node](https://eugenia1984.github.io/JavaScript-con-Node)
+Si quieres ver cómo fue este proyecto, puedes hacerlo desde -> [https://eugenia1984.github.io/JavaScript-con-Node](https://eugenia1984.github.io/JavaScript-con-Node)
  
 
 
