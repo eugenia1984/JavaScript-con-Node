@@ -1,6 +1,7 @@
-/*** Manipulacion de arrays ***/
+/********* Manipulacion de arrays *********/
 
-/***  ForEach ***/
+/*********  ForEach *********/
+
 // En vez d eutilizar el clasico for(){...}, tenemos el ForEach que me va a recorrer el arreglo, sin necesidad de esar detallando array.length()
 const vocales = ['a', 'e', 'i', 'o', 'u'];
 
@@ -13,30 +14,39 @@ vocales.forEach((element) => {
 vocales.forEach((element) => console.log(element));
 */
 
-/***** Métodos que mutan el array ******/
 
-/*** Push ***/
+
+
+/********** Métodos que mutan el array ***********/
+
+/********* Push ***********/
+
 // Me agrega el elemento al final del array, me va a modificar mi array
 const nombres = ['Ana', 'Mateo', 'Tania'];
 nombres.push('Joaquin');
 console.log(nombres);  // [ 'Ana', 'Mateo', 'Tania', 'Joaquin' ]
 
-/*** Shift ***/
+
+/******** Shift ********/
 // Me permite obtener el primer elemento del arreglo, el cual podria guardar en una variable. Pero me modifica el array original, el cual va  atener un elemento menos
 let primerElementoDeNombres = nombres.shift();
 console.log(primerElementoDeNombres); // Ana
 console.log(nombres); // [ 'Mateo', 'Tania', 'Joaquin' ]
 
 
-/*** Pop ***/
+/******** Pop ********/
+
 // Me permite sacar el último elemento del arreglo, lo puedo guardar en una varaible. Pero, me va a modificar mi array original, que va a tener un elemento menos
 let ultimoElementoDeNombres = nombres.pop();
 console.log(ultimoElementoDeNombres);  // Joaquin
 console.log(nombres); // [ 'Mateo', 'Tania' ]
 
-/****** Métodos que no mutan el array  ******/
 
-/*** Map ***/
+
+/**************** Métodos que no mutan el array  ******************/
+
+/******** Map **********/
+
 // Nos devuelve un nuevo array, por lo que no nos va a mutar el arreglo original
 
 // Ejemplo, en base a mi constante estudiantes, que es un array de estudiantes, voy a crear un nuevo objeto que tenga a cada estudiante como objeto, con las propiedades:  nombre  y la asistencia con el valor boolean true.
@@ -94,7 +104,9 @@ console.log(productosConImpuestos);
 const precios = productos.map( (producto) => producto.precio);
 console.log(precios);  // [ 1500, 3000, 2300 ]
 
-/***  Filter ***/
+
+/**********  Filter ************/
+
 // Me ayuda a filtrar los elementos de un arreglo en base a una condicion
 
 // Tengo un arreglo de estudiantes de un jardin de infantes con las propiedades: nombre, edad y matriculado
@@ -129,7 +141,8 @@ console.log(menoresDeTresMatriculados);
 */
 
 
-/*** Reduce  ***/
+/*********** Reduce  *********/
+
 // Para reducir todo un array a un solo valor que puede ser Number, String, Boolean u object
 
 // Tengo una rreglo de calificaciones de un estudiante
@@ -240,7 +253,8 @@ console.log(resultado3);
 */
 
 
-/*** Some - Every ***/
+/********** Some - Every **********/
+
 // Con some verifico si al menos un elemento dle array cumple con una condicion especifica, si al menos uno lo cumple retorna true.
 // Paca every necesito que todos los elementos del array cumplan con la condicion para que me retorne true
 const numerosUnoAlDiez = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -253,7 +267,8 @@ console.log(resultado4);  // true
 const resultado5 = numerosUnoAlDiez.every( (numero) => numero % 2 === 0 );
 console.log(resultado5);  // false, porque no todos los elmentos son pares
 
-/*** Find - FindIndex ***/
+/*********** Find - FindIndex ************/
+
 /*
 FIND...
 ... busca un elemento dentro de un array que coincida con cierta condicion y lo retorna. 
@@ -290,7 +305,9 @@ console.log(posicion); // 1
 // Para obetener el elemento
 console.log(clientes[posicion]);  // { id: 2, nombre: 'Katrina' }
 
-/*** Includes ***/
+
+/************* Includes **************/
+
 /*
 INCLUDES...
 ... para determinar si en un arreglo existe un elemento en específico y retorna : true o false.
@@ -332,7 +349,8 @@ console.log(buscador('na')); // Para buscar los nombres que contengan na
 [ { id: 2, nombre: 'Katrina' }, { id: 3, nombre: 'Dayana' } ]
 */
 
-/*** Join ***/
+/************ Join **************/
+
 /*
 JOIN...
 ... metodo que nos ajuda a unir todos los elementos de un array y generar un string a partir de esa union.
@@ -385,14 +403,95 @@ console.log(Object.values({id: 5, nombre: 'Michelle'}));  // [5, 'Michelle'}]
 // con Object.keys() obtengo las propiedad (key) de un objeto, aca lo veo en un ejemplo
 console.log(Object.keys({id: 5, nombre: 'Michelle'}));  // ['id', 'nombre'}]
 
-/***  ***/
 
-/***  ***/
+/********** Concat  ***********/
 
-/***  ***/
+// Permite concatenar los arrays, no modifica los arrays a concatenar, genera uno nuevo.
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [6, 7, 8, 9, 0];
+// Si necesito unir estos dos arreglos en uno nuevo
+const array3 = array1.concat(array2);
+console.log(array3); 
+/*
+[
+  1, 2, 3, 4, 5,
+  6, 7, 8, 9, 0
+]
+*/
 
-/***  ***/
+// Otro modo de concatenar arrays es utilizando el spread operator
+const array4 = [...array1,...array2];
+console.log(array4); // [ 1, 2, 3, 4, 5 , 6, 7, 8, 9, 0 ]
 
-/***  ***/
+/***** Sort *****/
+// Me sirve para ordenar
 
-/***  ***/
+// Para verlo en ejemplo ordeno un array de numeros
+const array5 = [ 1, 2, 3, 4, 5 , 6, 7, 8, 9, 0 ];
+console.log(array5.sort());
+/*
+[
+  0, 1, 2, 3, 4,
+  5, 6, 7, 8, 9
+]
+*/
+
+// Y en el caso de tener un array de meses
+const meses= ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+console.log(meses.sort());
+/*
+// Me los ordena en base al codigo ASCCI
+[
+  'Abril',     'Agosto',
+  'Diciembre', 'Enero',
+  'Febrero',   'Julio',
+  'Junio',     'Marzo',
+  'Mayo',      'Noviembre',
+  'Octubre',   'septiembre'
+]
+*/
+
+// Me lo va a ordenar en base al codigo ASCCI, inclusive a los numeros
+const array6 = [1, 10000, 21, 30, 4];
+console.log(array6.sort());  //[ 1, 10000, 21, 30, 4 ]
+
+// Para tenerlos ordenados de menor a mayor
+const ordenadoAscendente = array6.sort( (posicionActual, proximaPosicion) => posicionActual - proximaPosicion);
+console.log(ordenadoAscendente);  // [ 1, 4, 21, 30, 10000 ]
+
+// Si lo queria ordenar en forma descendente
+const ordenadoDescendente = array6.sort( (posicionActual, proximaPosicion) =>  proximaPosicion - posicionActual);
+console.log(ordenadoDescendente);  // [ 10000, 30, 21, 4, 1 ]
+
+
+/********** Splice ************/
+/*
+SPLICE...
+... Para remover o modificar elemento de un array o el array en si
+... puede recibir 1, 2 o 3 parametros:
+1er parametro: la posicion desde donde quieor empezar a eliminar
+2do parametro: desde la posicion indicada elimino la cantidad de elementos que le indico en este segundo parametro
+3er parametro: se ubica en un elemento y me lo reemplaza
+- Splice SI me modifica el arrray origen, es un metodo mutable
+*/ 
+const nombres2 = ['Gabriel', 'Geovanny', 'Dayana', 'Maximiliano'];
+console.log(nombres2.splice(1));  // [ 'Geovanny', 'Dayana', 'Maximiliano' ]
+const nombres3 = ['Gabriel', 'Geovanny', 'Dayana', 'Maximiliano'];
+console.log(nombres3.splice(0,1));  // [ 'Gabriel']
+const nombres4 = ['Gabriel', 'Geovanny', 'Dayana', 'Maximiliano'];
+nombres3.splice(0, 1, 'Ada');    // [ 'Ada', 'Geovanny', 'Dayana', 'Maximiliano' ]
+console.log(nombres4);
+
+
+
+/************** Slice *******************/
+/*
+Slice recibe dos parametros...
+... parametro 1: desde donde queres cortar el array, incluido
+... parametro 2: hasta donde queres cortar el array, no me incluye la ultima posicion
+- Slice NO me modifica el array de origen, no es inmutable
+*/
+
+const nombres5 = ['Gabriel', 'Geovanny', 'Dayana', 'Maximiliano'];
+const resultado9 = nombres5.slice(1,2);
+console.log(resultado9); // [ 'Geovanny' ]
