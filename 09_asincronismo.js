@@ -65,4 +65,26 @@ const imprimirData = (data) => console.log(data);
 getData(imprimirData);
 // Despues de 3 segundos: { nombre: 'Juan', apellido: 'Gomez' }
 
-/***** Promesas ******/
+
+
+// En este primer ejemplo voy a simular una promesa con callbacks
+
+// Primero: me copio la misma funcion getData de la explicacion anterior y le agrego un condicional
+const getData2 = (cb, cbError) => {
+  if(false) {
+    setTimeout( () => {
+      cb({
+        nombre: 'Juan',
+        apellido: 'Gomez',
+      })
+    }, 3000);
+  } else {
+    cbError(new Error('No se pudo obtener los datos'));
+  }
+};
+// Segundo: tengo una segunda funcion llamada imprimirData2
+const imprimirData2 = (data) => console.log(data);
+// Tercero: tengo una tercer funcion que se llamae ErrorHandler, la que me va a 'manejar' el error, me lo va a imprimir
+const errorHandler = (error) => console.log(error);
+//Cuarto: llamo a getData() y le paso como callBack la funcion imprmirData
+getData2(imprimirData2, errorHandler);  // Error: No se pudo obtener los datos

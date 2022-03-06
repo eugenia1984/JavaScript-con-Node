@@ -24,8 +24,9 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 :star: [Methods of Arrays](https://eugenia1984.github.io/JavaScript-con-Node/08_manipulacion_arrays.js) -> ForEach, push, pop, shift, map, filter, reduce, some, every, find, findIndex, includes, join, concat, sort, slice, splice
 
-:star: [Asynhrony](https://eugenia1984.github.io/JavaScript-con-Node/09_asincronismo.js) -> callbacks, then-catch , sync-await
+:star: [Asynchrony](https://eugenia1984.github.io/JavaScript-con-Node/09_asincronismo.js) -> callbacks, then-catch , sync-await
 
+:star: [Asynchrony - Promises] (https://eugenia1984.github.io/JavaScript-con-Node/10_promesas.js)-> then-catch , sync-await
 
 ---
 
@@ -82,7 +83,9 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 
 :star: [Manipulacion de arrays](https://eugenia1984.github.io/JavaScript-con-Node/08_manipulacion_arrays.js) -> ForEach, push, pop, shift, map, filter, reduce, some, every, find, findIndex, includes, join, concat, sort, slice, splice
 
-:star: [Asincronismo](https://eugenia1984.github.io/JavaScript-con-Node/09_asincronismo.js) -> callbacks, then-catch , sync-await
+:star: [Asincronismo](https://eugenia1984.github.io/JavaScript-con-Node/09_asincronismo.js) -> callbacks
+
+:star: [Asincronismo - promesas] (https://eugenia1984.github.io/JavaScript-con-Node/10_promesas.js)-> then-catch , sync-await
 
 
 ## Tecnologías 🛠️
