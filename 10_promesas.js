@@ -108,3 +108,75 @@ Fin
 */
 
 /********** Promesas: async, await ***********/
+
+// Es más legible que then() catch(), cuando tenemos varios then
+
+// Para que funcione AWAIT debe siempre tener ASYNC
+
+const getData3 = (error) =>   
+  new Promise( (resolve, reject) => {
+    if(!error) { 
+      setTimeout( () => {  
+        resolve({
+          nombre: 'Carlos',
+          apellido: 'Costa'
+        });
+      }, 3000)
+    } else { 
+      reject('No pudimos obtener los datos de getData3')
+    }
+  });
+
+  const getData4 = (error) =>   
+  new Promise( (resolve, reject) => {
+    if(!error) { 
+      setTimeout( () => {  
+        resolve({
+          nombre: 'Carlos Gustavo',
+          apellido: 'Costa'
+        });
+      }, 3000)
+    } else { 
+      reject('No pudimos obtener los datos de getData3')
+    }
+  })
+  // creo una constante llamada main que es igual a una funcion de expresion
+  const main = async () => {
+    let resultado = await getData3(false);  // para poder almacenar la que me trae getData3
+    console.log(resultado);
+  }
+
+  main();
+  /*
+  // Al ejecutarlo:
+  { nombre: 'Carlos', apellido: 'Costa' }
+  */
+
+/*
+// Me creo la constante getData4 para poder simular el caso de cuando necesito ejecutar más de una promesa y la constante main me quedaría asi:
+
+const main = async () => {
+  let resultado = await getData3(false); 
+  let resultado2 = await getData4(false); 
+  console.log(resultado);
+  console.log(resultado2);
+}
+*/
+
+/****************** try - catch ****************/
+
+// En el caso de que provocaramos un error no tenemos un catch que este pendiente del mismo
+// Con ASYNC-AWAIT usamos la estructura TRY-CATH para el manejo de errores
+
+const main2 = async () => {
+  try {
+    let resultado = await getData3(false); 
+    let resultado2 = await getData4(false); 
+    console.log(resultado);
+    console.log(resultado2);
+  } catch(error) {
+    console.log(error);
+  } 
+}
+
+main2();
