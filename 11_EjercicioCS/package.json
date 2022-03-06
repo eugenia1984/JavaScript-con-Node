@@ -1,0 +1,20 @@
+{
+  "name": "11_ejerciciocs",
+  "version": "1.0.0",
+  "description": "practica cliente servidor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "practica",
+    "modelo",
+    "cliente",
+    "servidor"
+  ],
+  "author": "Maria Eugenia Costa",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.26.0"
+  }
+}

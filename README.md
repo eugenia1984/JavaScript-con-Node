@@ -42,7 +42,12 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 **HTML5** , **CSS3**, **JavaScript** & **Node**.
 
-*Tip* : if you use *Visual Studio Code* you can install the extension called **Code Runner**, so you can select the JavaScript code to run and view it directly from the VSC console.
+*Tip* : 
+
+- If you use *Visual Studio Code* you can install the extension called **Code Runner**, so you can select the JavaScript code to run and view it directly from the VSC console.
+
+
+- If you use *Chrome* you can install the **JSON Viewer** extension
 
 ## Demo 📦
 
@@ -106,7 +111,11 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 
 **HTML5**, **CSS3**,  **JavaScript** & **Nodejs**
 
-*Tip* : si utilizas *Visual Studio Code* te podes instalar la extension llamada **Code Runner**, asi podes seleccionar el codigo JavaScript a ejecutar y lo vez directamente desde la consola de VSC.
+*Tip* :
+
+- Si utilizas *Visual Studio Code* te podes instalar la extension llamada **Code Runner**, asi podes seleccionar el codigo JavaScript a ejecutar y lo vez directamente desde la consola de VSC.
+
+- Si utilizas Chrome podes instalar la extension **JSON Viewer** para ver de forma más legible el json
 
 ## Demo 📦
 
