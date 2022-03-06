@@ -26,10 +26,15 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 :star: [Asynchrony](https://eugenia1984.github.io/JavaScript-con-Node/09_asincronismo.js) -> callbacks y then - catch
 
-:star: [Asynchrony - Promises] (https://eugenia1984.github.io/JavaScript-con-Node/10_promesas.js)-> async-await y try-catch
+:star: [Asynchrony - Promises](https://eugenia1984.github.io/JavaScript-con-Node/10_promesas.js)-> async-await y try-catch
 
 
-:star: [Node js concepts]((https://eugenia1984.github.io/JavaScript-con-Node/11_node_je.js)
+:star: [Node js concepts](https://eugenia1984.github.io/JavaScript-con-Node/11_node_js.js)
+
+:star: [Client server](https://eugenia1984.github.io/JavaScript-con-Node/12_client_server.js)
+
+:star: [Exercise Client server](https://eugenia1984.github.io/JavaScript-con-Node/11_EjercicioCS)
+
 
 ---
 
@@ -88,9 +93,13 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 
 :star: [Asincronismo](https://eugenia1984.github.io/JavaScript-con-Node/09_asincronismo.js) -> callbacks y then - catch
 
-:star: [Asincronismo - promesas] (https://eugenia1984.github.io/JavaScript-con-Node/10_promesas.js)->  sync-await y try - catch
+:star: [Asincronismo - promesas](https://eugenia1984.github.io/JavaScript-con-Node/10_promesas.js)->  sync-await y try - catch
 
-:star: [Node js conceptos]((https://eugenia1984.github.io/JavaScript-con-Node/11_node_je.js)
+:star: [Node js conceptos](https://eugenia1984.github.io/JavaScript-con-Node/11_node_js.js)
+
+:star: [Desarrollo cliente servidor](https://eugenia1984.github.io/JavaScript-con-Node/12_client_server.js)
+
+:star: [Exercicio Client server](https://eugenia1984.github.io/JavaScript-con-Node/11_EjercicioCS)
 
 
 ## Tecnologías 🛠️
