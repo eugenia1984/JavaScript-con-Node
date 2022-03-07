@@ -23,7 +23,7 @@ Desde [https://www.npmjs.com/](https://www.npmjs.com/), donde estan almacenados 
 
 En este mismo sitio puedo ver los paquetes y ver información sobre ellos:
 
-- como insalarlo
+- como instalarlo
 
 - el repositorio
 
@@ -48,7 +48,7 @@ En el **package.json**:
 }
 ```
 
-### ¿ Como istalo la dependencia nodemon en desarrollo ?
+### ¿ Como instalo la dependencia nodemon en desarrollo ?
 
 
 ```
