@@ -12,13 +12,14 @@ const main = async () => {
       return {
         id: character.id,
         name: character.name,
-        statur: character.status,
+        status: character.status,
         species: character.species,
       }
     })
     .map( (personaje) => Object.values(personaje).join(','))
     .join(' \n');
-
+  
+  characters = 'id,name,status, spacie, \n'.concat(characters);  
   await fs.writeFile(path.join(__dirname, 'data.csv'), characters);
   //console.log(path.join(__dirname, 'data.csv'));
   //console.log(characters);

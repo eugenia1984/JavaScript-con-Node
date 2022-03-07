@@ -525,4 +525,10 @@ Hay que recordar que File System trabaja con promesas, por lo que voy a necesita
 await fs.writeFile(path.join(__dirname, 'data.csv'), characters);
 ```
 
-Y ahora al ejecutar ```> node .\index.js``` se me genera el archivo
+Y ahora al ejecutar ```> node .\index.js``` se me genera el archivo.
+
+Para que me quede como cabecera del archivo que tipos de dato tendrá cada columna, y no los datos del primer personaje, antes de invocar a File System y crear el archivo y pasarle los datos voy a concatenar mi constante characters para agregarle la primer linea con los datos de que traera cada columna:
+
+```JavaScript
+characters = 'id,name,status, spacie, \n'.concat(characters);  
+```

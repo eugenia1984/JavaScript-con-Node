@@ -33,9 +33,9 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 :star: [Client server](https://eugenia1984.github.io/JavaScript-con-Node/12_client_server.js)
 
-:star: [Exercise Client server](https://eugenia1984.github.io/JavaScript-con-Node/11_EjercicioCS)
+:star: [Exercise Client server](https://eugenia1984.github.io/JavaScript-con-Node/11_EjercicioCS) -> I create a csv file from data taken from a REST API
 
-:star: [Exercicio Servidores Web](https://eugenia1984.github.io/JavaScript-con-Node/12_servidores_web)
+:star: [Exercicio Servidores Web](https://eugenia1984.github.io/JavaScript-con-Node/12_servidores_web) 
 
 
 ---
@@ -106,7 +106,7 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 
 :star: [Desarrollo cliente servidor](https://eugenia1984.github.io/JavaScript-con-Node/12_client_server.js)
 
-:star: [Exercicio Cliente servidor](https://eugenia1984.github.io/JavaScript-con-Node/11_EjercicioCS)
+:star: [Exercicio Cliente servidor](https://eugenia1984.github.io/JavaScript-con-Node/11_EjercicioCS) -> creo un archivo csv a partir de datos tomado de una API REST
 
 :star: [Exercicio Servidores Web](https://eugenia1984.github.io/JavaScript-con-Node/12_servidores_web)
 
