@@ -44,6 +44,10 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 **HTML5** , **CSS3**, **JavaScript** & **Node**.
 
+**Tools**: Postman, Mockaroo
+
+**Dependencies** : axios, express, nodemon (developer mode).
+
 *Tip* : 
 
 - If you use *Visual Studio Code* you can install the extension called **Code Runner**, so you can select the JavaScript code to run and view it directly from the VSC console.
@@ -114,6 +118,10 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 ## Tecnologías 🛠️
 
 **HTML5**, **CSS3**,  **JavaScript** & **Nodejs**
+
+**Herramientas**: Postman, Mockaroo
+
+**Dependencias** : axios, express, nodemon (modo devesarrolador).
 
 *Tip* :
 
