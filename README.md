@@ -35,6 +35,8 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 :star: [Exercise Client server](https://eugenia1984.github.io/JavaScript-con-Node/11_EjercicioCS)
 
+:star: [Exercicio Servidores Web](https://eugenia1984.github.io/JavaScript-con-Node/12_servidores_web)
+
 
 ---
 
@@ -104,7 +106,9 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 
 :star: [Desarrollo cliente servidor](https://eugenia1984.github.io/JavaScript-con-Node/12_client_server.js)
 
-:star: [Exercicio Client server](https://eugenia1984.github.io/JavaScript-con-Node/11_EjercicioCS)
+:star: [Exercicio Cliente servidor](https://eugenia1984.github.io/JavaScript-con-Node/11_EjercicioCS)
+
+:star: [Exercicio Servidores Web](https://eugenia1984.github.io/JavaScript-con-Node/12_servidores_web)
 
 
 ## Tecnologías 🛠️
