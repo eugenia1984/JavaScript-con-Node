@@ -1,12 +1,18 @@
 {
   "name": "12_servidores_web",
   "version": "1.0.0",
-  "description": "",
+  "description": "practica con servidores web en Nodejs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Maria Eugenia Costa",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }

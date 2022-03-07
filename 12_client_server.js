@@ -99,17 +99,6 @@ En results hay un array de Objects, y cada Object representa un personaje de la 
 
 /*
 Para el ejercicio se va a desarrollar un pequeño cliente que permita traer los datos del servidor, esto está en la carpeta 11_EjercicioCs (CS = Cliente - Servidor)
-
-Vamos a trabajar con la TERMINAL de VSC
-
-Para ello arriba voy a Terminal > Nueva Terminal
-
-Si en la terminal le doy al tachito la borro, pero se a seguir ejecutando y si nuevamente voy a Terminal > Nueva terminal voy a abrir una nueva, pero si quiero seguir trabajando con la que ya tenia voy a Ver > Terminal
-
-Para ir moviendome de files o archivos utilizo:
-> cd nombre_del_archiv_al_que_quiero_entrar
-
-Pasos a seguir:
 */
 
 /***************** 1ro: genero un nuevo proyecto ***************/
@@ -119,46 +108,24 @@ Pasos a seguir:
 
 Me pide que complete con la información del proyecto:
 
-package name: (11_ejerciciocs): <si le doy enter ya me deja por defecto como nombre del proyecto el de la carpeta, si quiero otro nombre tipeo y enter>
+package name: (11_ejerciciocs):
+version: (1.0.0) 
+description: 
+entry point: 
+test command: 
+git repository: 
+keywords: 
+author:
+license: 
 
-version: (1.0.0) <si le doy enter dejo la version 1.1.0, si quiero otra version lo tipeo y enter>
+Is this OK? (yes) >
 
-description: <pongo la descripcion de mi proyecto>
-
-entry point: (index.js) <el punto de entrada, por defecto es el index.js, si tengo otro distitno lo tipeo y enter>
-
-test command: <si necesito algun comando para test lo ingreso ahora, si no hago test lo dejo vacío y enter>
-
-git repository: <ingreso si lo tengo en un repositorio en GitHub>
-
-keywords: <ingreso palabras claves que identifiquen a mi proyecto>
-
-author: <nombre del autor dle proyecto>
-
-license: (ISC) <el tipo de licencia con el que se maneja el proyecto, para este ejercicio indicamos MIT >
-
-Is this OK? (yes) < Enter se da ok y se creo el package.json, si tipeamos NO se cancela y hay que hacerlo desde cero todo de nuevo con > npm init >
-
-Se genera el package.json:
-
-{
-  "name": "11_ejerciciocs",
-  "version": "1.0.0",
-  "description": "practica cliente servidor",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "practica",
-    "modelo",
-    "cliente",
-    "servidor"
-  ],
-  "author": "Maria Eugenia Costa",
-  "license": "MIT"
-}
+Se genera el package.json
 */
+
+
+
+/************** 2do: instalo las dependencias ***************/
 
 /*
 Para la estructura de mi proyecto creo el archivo index.js, en otros proyectos también se lo puede encontrar como app.js o main.js.
@@ -166,40 +133,26 @@ En este archivo comenzaré a desarrollar el cliente
 
 Antes necesito tener instaladas las dependencias.
 
-Voy a la terminal, y la limpio con:
-> clear
-*/
-
-/************** 2do: instalo las dependencias ***************/
-
-/*
-Utilizo NPM
-
-> npm install <nombre del paquete>
+Utilizo NPM : > npm install <nombre del paquete>
 
 Como vamos a trabajar con Axios: > npm install axios
 
 Se me va a crear la carpeta NODE_MODULEs que va a tener mis dependencias
 
-Ahora en mi package.json voy a ver la dependencia:
-"dependencies": {
-    "axios": "^0.26.0"
-  }
-
-Y también se me agrego package-lock.json, un archivo que me ayuda a mantener la integridad de las versiones de las dependecias, para que si otra persona utiliza este proyecto trabaje con las mismas versiones
-
+Ahora en mi package.json voy a ver la dependencia y también se me agrego package-lock.json, un archivo que me ayuda a mantener la integridad de las versiones de las dependecias, para que si otra persona utiliza este proyecto trabaje con las mismas versiones
 */
 
 /************** 3ro: index.js ***************/
 
 /*
-// Llamo a mi dependencia:
-const axios = require('axios');
+const axios = require('axios'); // Llamo a mi dependencia
 */
 
 /*
 // Creo mi funcion main que se ejecuara todo mi codigo
 // La REST API de rickandmorty maneja Promises con async await
+
+/*
 const main = async () => {
   //realizo la peticion al servidor con el .get()
   let response = await axios.get('https://rickandmortyapi.com/api/character');
@@ -223,22 +176,17 @@ main();
 */
 
 /*
-// Para poder ejecutar el archivo vuelvo a la terminal y trabajo con node, primero siempre me fijo que este situada en la carpeta de mi ejericico, en 11_EjercicioCS
+Para poder ejecutar el archivo vuelvo a la terminal y trabajo con node, primero siempre me fijo que este situada en la carpeta de mi ejericico, en 11_EjercicioCS y ejecuto: > node <nombre del archivo a ejecutar>, en este caso el index.js
 
-> node <nombre del archivo a ejecutar>
+El servidor me devuelve mucha informacion, como:
+status: 200
+StatusText: 'OK'
+los headers
+la configuracion
+request
+data : la informacion que habiamos visto en el navegador, es la respuesta que debemos acceder, por lo que en response hay que acceder a data. Data me va a traer dos cosas: info y results
 
-> node .\index.js
-
-// El servidor me devuelve mucha informacion
-
-// status: 200
-// StatusText: 'OK'
-// los headers
-// la configuracion
-// request
-// data : la informacion que habiamos visto en el navegador, es la respuesta que debemos acceder, por lo que en response hay que acceder a data. Data me va a traer dos cosas: info y results
-
-// Al haber agregado: let { data: {results} } = response, si ahora ejecuto nuevamente con > node .\index.js , voy a ver directamente toda la información que me trae results de data, o sea ahora veo el array de Objects que son los personajes
+Al haber agregado: let { data: {results} } = response, si ahora ejecuto nuevamente con > node .\index.js , voy a ver directamente toda la información que me trae results de data, o sea ahora veo el array de Objects que son los personajes
 */
 
 /*
@@ -273,12 +221,6 @@ main();
 // Primero en el return de mi funcion agrego mas información de cada personaje para luego poder tener más información en mi archivo 
 
 /*
-const main = async () => {
-  let response = await axios.get('https://rickandmortyapi.com/api/character');
-  let { 
-    data: { results },
-  } = response;
-  let characters = results.map( (character) => {
     return {
       id: character.id,
       name: character.name,
@@ -286,8 +228,6 @@ const main = async () => {
       species: character.species,
     }
   })
-  console.log(characters);
-}
 */
 
 /*
@@ -298,62 +238,11 @@ const main = async () => {
 
 .map( (personaje) => Object.values(personaje).join(','));
 
-
-Me queda este codigo:
-
-const axios = require('axios');
-
-const main = async () => {
-  let response = await axios.get('https://rickandmortyapi.com/api/character');
-  let { 
-    data: { results },
-  } = response;
-  let characters = results
-    .map( (character) => {
-      return {
-        id: character.id,
-        name: character.name,
-        statur: character.status,
-        species: character.species,
-      }
-    })
-    .map( (personaje) => Object.values(personaje).join(','));
-  console.log(characters);
-};
-
-main();
-
-Y al ejecutar main() con el comando 
-> node .\index.js
-Obtengo un array con los values(datos) de cada personaje separados por comas:
-
-[
-  '1,Rick Sanchez,Alive,Human',
-  '2,Morty Smith,Alive,Human',
-  '3,Summer Smith,Alive,Human',
-  '4,Beth Smith,Alive,Human',
-  '5,Jerry Smith,Alive,Human',
-  '6,Abadango Cluster Princess,Alive,Alien',
-  '7,Abradolf Lincler,unknown,Human',       
-  '8,Adjudicator Rick,Dead,Human',
-  '9,Agency Director,Dead,Human',
-  '10,Alan Rails,Dead,Human',
-  '11,Albert Einstein,Dead,Human',
-  '12,Alexander,Dead,Human',
-  '13,Alien Googah,unknown,Alien',
-  '14,Alien Morty,unknown,Alien',
-  '15,Alien Rick,unknown,Alien',
-  '16,Amish Cyborg,Dead,Alien',
-  '17,Annie,Alive,Human',
-  '18,Antenna Morty,Alive,Human',
-  '19,Antenna Rick,unknown,Human',
-  '20,Ants in my Eyes Johnson,unknown,Human'
-]
+Y al ejecutar main() con el comando: > node .\index.js , obtengo un array con los values(datos) de cada personaje separados por comas:
 
 Ahora falta que los valores estén unidos, para que sean un solo String y se pueda enviar como un archivo csv y deje de ser un array.
 
-Entonces a continuacion de mi .join(',') agrego un nuevo join:
-.join(' \n');
+Entonces a continuacion de mi .join(',') agrego un nuevo join: .join(' \n');
 De modo que genero un salto de linea y ahora al ejecutar main() obtengo:
 
 1,Rick Sanchez,Alive,Human 
@@ -384,19 +273,14 @@ Ya tengo los datos para poder enviar al archivo csv
 
 /************************** Modulos Nodejs ***************************/
 
-/*
-Son módulos que ya vienen precargados con NodeJS, son dependencias que no son necesarias instalarlas por línea de comando con > npm install, ni va a existir un registro de la misma en package.json
-*/
+//Son módulos que ya vienen precargados con NodeJS, son dependencias que no son necesarias instalarlas por línea de comando con > npm install, ni va a existir un registro de la misma en package.json
 
 // Hay dos módulos para ver:
 
 /************ Módulo FS ( File System) *************/
 /*
 Luego de mi constante axois agrego una nueva constante para poder traerme el modulo de File System:
-
 const fs = require('fs').promises;
-
-
 Con este modulo voy a generar mi archivo csv
 */
 
@@ -405,13 +289,9 @@ Con este modulo voy a generar mi archivo csv
 
 /*
 Luego de mi constante fs me traigo con una nueva constante el modulo Path:
-
 const path = require('path');
-
 Y lo pruebo con la variable global __dirname que me devuelve el path donde me encuentro, con:
-
 console.log(__dirname);
-
 Y al ejecutar main() veo mi path:
 C:\Users\juan\Desktop\js_con_node\11_EjercicioCS
 
@@ -419,9 +299,7 @@ Entocnes ahora voy a trabajar con PATH para generar rutas, voy a utilizar su mé
 
 console.log(path.join(__dirname, 'data.csv'));
 
-
 Y veo por consola:
-
 C:\Users\juan\Desktop\js_con_node\11_EjercicioCS\data.csv
 */
 
@@ -435,7 +313,6 @@ Hay que recordar que File System trabaja con promesas, por lo que voy a necesita
 - los datos a almacenar en ese archivo : ya lo tengo guardado en mi variable characters
 
 await fs.writeFile(path.join(__dirname, 'data.csv'), characters);
-
 */
 
 // Y ahora al ejecutar > node .\index.js se me genera el archivo
