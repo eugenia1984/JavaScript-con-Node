@@ -14,6 +14,16 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/:id', (req, res) => {
+  let {params: {id}} = req;
+  let user = Service.getUser(id);
+
+  res.json({
+    message: `Usuario ${id}`,
+    body: user,
+  });
+});
+
 app.post('/', (req, res) => {
   let { body: newUser } = req;
   let user = Service.createUser(newUser);
@@ -21,6 +31,15 @@ app.post('/', (req, res) => {
     message: 'Usuario creado',
     body: user
   })
+})
+
+
+app.put('/:id', (req,res) => {
+  // respuesta
+})
+
+app.delete('/:id', (req,res) => {
+  // respuesta
 })
 
 app.listen(PORT, () => {

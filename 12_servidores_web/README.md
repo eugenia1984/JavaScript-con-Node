@@ -621,11 +621,82 @@ Pero estos datos sólo viven en momeria, si detengo el proceso, no voy a poder v
 
 ---
 
+## :star:  Parametros de rutas
+
 En el .app.get() estoy devolviendo TODOS los datos del servidor, pero ¿ si alguien queire algún dato en específico ?
 
 Por ejemplo ¿ si alguien quiere el usuario 20 o 18 ?
 
 Para esto vamos a necesitar **parametros** en al ruta.
 
+Primero vamos a crear un **nuevo endpoint** y le indico que voy a recibir el parametro id, para ello debo anteponer **:** .
+
+```JavaScript
+app.get('/:id', (req, res) => { }
+```
+
+Para verlo en práctica, en Postman hago un nuevo GET y le agrego un parámetro id, el cual debe ser un numero entre 1 y 20 -> ```http://localhost:3000/2```
+
+Y ahora voy a tener que obtener el prametro del get con el req(la peticion del cliente) para mostrar los datos del usuario que indico en el id.
+
+
+En **index.js**, con desestructuración en la variable **params** voy a recibir el id del usuario que por mediod e req (request) lo obtengo dle pedido dle cliente mediante la petición GET.
+
+Y voy a luego crear una nueva función **.getUser()** en service.js para crear un usuario. Esta misma función ya la utilizo en este get, para poder obtener el id y guardo el dato en la variable **user**, variable que voy a utilizar en la respuesta, al devolver el JSON en el body, para solo devolver los datos del usuario solicitado por **parametro**
+
+```JavaScript
+app.get('/:id', (req, res) => {
+  let {params: {id}} = req;
+  let user = Service.getUser(id);
+
+  res.json({
+    message: `Usuario ${id}`,
+    body: user,
+  });
+});
+```
+
+Ahora en **service.js** debo crear mi funcion **.getUser()**.
+
+Lo que debo recordar es que el **id** que recibo como parametros lo voy a estar reciebidno como String y yo lo necesito en tipo de dato **Number**, para eso voy a tener como parametro este **id** que es String y con **Number()** lo casteo a número.
+
+```JavaScript
+ getUser: (id) => {
+    let identificador = Number(id);
+  },
+```
+
+Y ahora tomo la **data** y aplicando **filter** voy a buscar entre todos los usuarios (por eso tengo como parametro **person**) al que tenga el **id** que se pidio como parametor en el request GET (o sea va a ser el almacenado en mi variable **identificador**).
+
+```JavaScript
+data.filter( (person) => person.id === identificador)[0]
+```
+
+Hay que recordar que **.filter()** retorna un array con las coincidencias de la búsqueda, por eso voy a necesitar **.[0]**.
+
+Y finalmente retorno el usaurio encontrado.
+
+```JavaScript
+getUser: (id) => {
+  let identificador = Number(id);
+  data.filter( (person) => person.id === identificador)[0];
+
+  return user;
+},
+```
+
 ---
 
+En **index.js** agrego nuevos **end points** para poder modificar y borrar un usuario.
+
+```JavaScript
+app.put('/:id', (req,res) => {
+  // respuesta
+})
+
+app.delete('/:id', (req,res) => {
+  // respuesta
+})
+```
+
+---
