@@ -31,16 +31,31 @@ app.post('/', (req, res) => {
     message: 'Usuario creado',
     body: user
   })
-})
+});
 
 
 app.put('/:id', (req,res) => {
-  // respuesta
-})
+  const user = Service.getUser(req.params.id);
+  let {params: { id }} = req;
+  let { body: newUpdater } = req;
+  if (user.length == 0) {
+    res.status(404).send(`Usuario con id ${req.params.id} no existe`);
+  } else {
+    const result = Service.validarDatos(req.body);
+    if (result.error) {
+      res.status(400).send(result.error.details[0].message);
+    } else {
+      res.send(Service.updateUser(id, newUpdater));
+    }
+  }
+});
 
 app.delete('/:id', (req,res) => {
-  // respuesta
-})
+  const user = Service.getUser(req.params.id);
+    let { params : {id} } = req;
+    
+    res.send(Service.deleteUser(id));
+});
 
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);

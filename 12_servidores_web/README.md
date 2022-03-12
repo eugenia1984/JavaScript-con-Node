@@ -689,14 +689,87 @@ getUser: (id) => {
 
 En **index.js** agrego nuevos **end points** para poder modificar y borrar un usuario.
 
+Para **modificar**, en **index.js**:
+
 ```JavaScript
 app.put('/:id', (req,res) => {
-  // respuesta
-})
+  app.put('/:id', (req,res) => {
+  const user = Service.getUser(req.params.id);
+  let {params: { id }} = req;
+  let { body: newUpdater } = req;
+  if (user.length == 0) {
+    res.status(404).send(`Usuario con id ${req.params.id} no existe`);
+  } else {
+    const result = Service.validatos(req.body);
+    if (result.error) {
+      res.status(400).send(result.error.details[0].message);
+    } else {
+      res.send(Service.updateUser(id, newUpdater));
+    }
+  }
+});
+```
 
-app.delete('/:id', (req,res) => {
-  // respuesta
-})
+Y en  **service.js**:
+
+```JavaScript
+const joi = require('joi'); 
+
+ updateUser: (id, newUpdater) => {
+    let identificador = Number(id);
+    var usuarioActualizado = data.find((usuarioActualizado) => usuarioActualizado.id === identificador);
+    usuarioActualizado.first_name = newUpdater.first_name;
+    usuarioActualizado.last_name = newUpdater.last_name;
+    usuarioActualizado.email = newUpdater.email;
+    return newUpdater;
+  },
+  validarDatos: (user) => {
+    const schema = joi.object({
+      first_name: joi.string().min(6).required(),
+      last_name: joi.string().min(6).required(),
+      email: joi.string().min(6).required().email(),
+    });
+ 
+    const validation = schema.validate(user);
+    return validation;
+  },
+```
+
+Y en terminal:
+
+```
+npm install joi  
 ```
 
 ---
+
+Y para **eliminar** en **index.js**
+
+```JavaScript
+app.delete('/:id', (req, res) => {
+    const user = Service.getUser(req.params.id);
+    let { params : {id} } = req;
+    
+    res.send(Service.deleteUser(id));
+} );
+```
+
+Y en **service.js** :
+
+```JavaScript
+deleteUser: (id) => {
+    let identificador  = Number(id);
+    let user = data.filter( (person) => person.id === identificador)[0];
+
+    if (user == undefined) {
+        
+        return ("El usuario que intenta eliminar no existe");
+    } else {
+        let userAEliminar = data.findIndex((userToDelete) => userToDelete.id === identificador);
+        let datosEliminados = data.find((userToDelete) => userToDelete.id === identificador);
+        data.splice(userAEliminar, 1);
+        
+        return (`Eliminados los datos del usuario ${datosEliminados.first_name} con ID ${datosEliminados.id}`);
+    }
+},
+```
