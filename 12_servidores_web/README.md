@@ -332,7 +332,7 @@ Esto va a simular nuestra base de datos, va a ser un array de Objects con los ke
 Al tener instalado en Visual Studio Code la extencion **Relative Path**, me situo dentro de los parentesis en el required y con el atajo **control+shift+h** y al tipear data me trae la ruta exacta de donde tengo el archivo: **'./MOCK_DATA.json'**
 
 ```JavaScript
-const data = required('./MOCK_DATA.json');
+const data = require('./MOCK_DATA.json');
 ```
 
 Y modifico el método .get() para que al hacer la peticion traigan los datos creados:
@@ -343,6 +343,289 @@ app.get('/', (req, res) => {
 });
 ```
 
-```
+---
+
+## Para correr nodemon
+
+
+Si en consola ingresamos:
 
 ```
+nodemon index.js
+```
+
+Nos da error, por eso hay que ir al **package.json** y en **scripts** primero borro la que viana por defecto ``` "test": "echo \"Error: no test specified\" && exit 1",``` y agrego:
+
+```
+ "dev": "nodemon index.js"
+```
+
+Y ahora nodemon se va a ejecutar solo en el ámbito de nuestro proyecto.
+
+Para ejecutar este script
+
+```npm run dev```
+
+Y veo:
+
+```
+[nodemon] 2.0.15
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node index.js`
+Servidor escuchando en http://localhost:3000
+```
+
+
+Y modificando el GET:
+
+```JavaScript
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Lista de usuarios',
+    body: data
+  });
+});
+```
+
+En le browser veo un JSON que tiene una clave mensaje y otra con el body y los datos de MOKDATA.
+
+---
+
+# :star: CRUD
+
+Voy a modificar la estructure del proyecto, voy a crear la carpeta **src** por source, que va a tener los recursos con los que trabajare.
+
+Y muevo a **MOCK_DATA.json** dentro de esa carpeta. 
+
+ 
+Y dentro de **src** creo un nuevo archivo, llamado **service.js**, va a ser el encargado de manejar los datos, va a ser el CRUD (crear, leer, actualizar y eliminar ). Por esto en **index.json** voy a eliminar:
+
+```JavaScript
+const data = require('./MOCK_DATA.json');
+```
+
+Y para no tener un error en mi petición GET en vez de devolver la **data**, voy a devolver un array vacío:
+
+```JavaScript
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Lista de usuarios',
+    body: []
+  });
+});
+```
+
+
+Y en **service.js** voy a traer los datos y almacenarlos en una constante:
+
+```JavaSCript
+const data = require('./MOCK_DATA.json');
+```
+
+Y también voy a aclarar que el archivo service.js es un **módulo** que puede ser **exportado**, por lo que se puede utilizar en otro archivo.
+
+Y va a ser igual a un objeto, el que tendrá las funciones encargadas de manipular los datos.
+
+La primera va a ser **.getUsers()** , para **obtener usuarios**, es el **Leer** la información del CRUD.
+
+
+```JavaSCript
+const data = require('./MOCK_DATA.json');
+
+module.exports = {
+  getUsers: () => data,
+}
+```
+
+
+Y lo voy a utilizar en **index.js**:
+
+
+```JavaSCript
+const express = require('express');
+// traugo el modulo de service y lo guardo en al constante Service
+const Service = require('./src/service');  
+
+const app = express();
+const PORT = 3000;
+
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Lista de usuarios',
+    // ahora en el body en vez de devolver data utilizo el modulo Service y la funcion .getUsers()
+    body: Service.getUsers(),
+  });
+});
+
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+});
+
+```
+
+Ahora voy a agregar la función para CREAR al usuario con **createUser()** que también ve a ser una función, la cual tendrá como parámetro los datos del usuario (**dataUser**), peor en este caso no vamos a persistir los datos en el tiempo, solo viven en momeria, al reiniciar el servidor se perderán los datos.
+
+Y esta función me da a retornar un nuevo usuario, el cual v aa ser un **Object** que v aa tener como atributos:
+
+- id, aca yo ya se que tengo 20 usuarios creados, voy a necesitar que siga ese conteo, para eso utilizo **data.length** y le sumo 1.
+
+- first_name
+
+- last_name
+
+- email
+
+Luego ocn el spread operator agrego ese usuario a mi araay: 
+```JavaScript
+... dataUser,
+```
+
+Y lo agrego al final con **.push()**
+
+```JavaScript
+const data = require('./MOCK_DATA.json');
+
+module.exports = {
+  getUsers: () => data,
+  createUser: (dataUser) => {
+    let newUser = {
+      id: data.length + 1,
+      ... dataUser,
+
+      return newUser;
+    }
+    data.push(newUser);
+  }
+}
+```
+
+Y me va a devolver ese **newUser** para luego poder utilizarlo con la petición **POST**.
+
+Debo crear un nuevo **end point** (otra ruta en el servidor para crear el usuario).
+
+En el **index.json** primero aprovecho una utilidad de express para poder RECIBIR LOS DATOS:
+
+```JavaScript
+app.use(express.json())
+```
+
+Y luego debeo tener la petición POST, la cual v aa traer los datos en su cuerpo y los alamceno en la variable **new USer**:
+
+```JavaScript
+let newUser = req.body;
+```
+
+O lo puedo hacer con desestructuración y dandole el nombre de newUSer a body:
+
+```JavaScript
+let { body: newUser } = req;
+```
+
+Y ahora uso el servicio para agregar el dato.
+
+```JavaScript
+ Service.createUser(newUser);
+```
+
+Y ahora le respondemos al cliente que los datos fueron agregados con el **.res**:
+
+```JavaScript
+ res.json({
+   // El mensaje que avisa que los datos fueron agregados
+    message: 'Usuario creado',
+    // con body voy a mostrar los datos del usuario agregado, que v a aser el ultimo del array de usuarios
+    body:
+  })
+
+```
+
+
+Entonces una opción es:
+
+```JavaScript
+app.post('/', (req, res) => {
+  let { body: newUser } = req;
+  
+  res.json({
+    message: 'Usuario creado',
+    body: Service.createUser(newUser)
+  })
+})
+```
+
+Y otra forma de hacerlo:
+
+- me guardo los datos del usuario creado en la varible **user** y la devuelvo con **body** en la respuespuesta:
+
+```JavaScript
+app.post('/', (req, res) => {
+  let { body: newUser } = req;
+  let user = Service.createUser(newUser);
+  res.json({
+    message: 'Usuario creado',
+    body: user
+  })
+})
+```
+
+---
+
+En **POSTMAN** voy a hacer una nueva petición, en este caso **post** para que envíe datos y cree un nuevo usuario:
+
+
+```
+POST  http://localhost:3030
+```
+
+Voy a **body** > hago click en **raw** > y en donde dice text lo cambio a **JSON**, y envío mi objeto JSON, hay que recordar que el id ya se me autogenera, ese dato no debo enviarlo
+
+```
+{
+  "first_name" : "Mateo",
+  "last_name": "Costa",
+  "email": "mateo.costa@example.com"
+}
+```
+
+Y haciendo click en **SEND** se ve el mensaje de usuario creado y en el body los datos que recien ingresamos con el id 21.
+
+
+Si en Postman me fijo la respuesta, veo que es **200**, todo fue exitoso.
+
+Y pdemos personalizar la respuesta, está la web [https://httpstatuses.com/](https://httpstatuses.com/).
+
+Y en **index.json** agrego en la respuesta el codigo 201:
+
+```JavaScript
+app.post('/', (req, res) => {
+  let { body: newUser } = req;
+  let user = Service.createUser(newUser);
+  res.status(201).json({
+    message: 'Usuario creado',
+    body: user
+  })
+})
+```
+
+Entonces si vuelvo a Postman y creo un nuevo usuaario con POST y en body > raw y JSON y le doy a SEND.
+
+Y ahora la respuesta en vez de un 200 voy a tener un **201**.
+
+---
+
+Al momento mi servidor puede LEER a los usuarios con el primer app.get() y también puede CREAR un nuevo usuario con .app.post().
+
+Pero estos datos sólo viven en momeria, si detengo el proceso, no voy a poder ver los datos de los nuevos usuarios agregados.
+
+---
+
+En el .app.get() estoy devolviendo TODOS los datos del servidor, pero ¿ si alguien queire algún dato en específico ?
+
+Por ejemplo ¿ si alguien quiere el usuario 20 o 18 ?
+
+Para esto vamos a necesitar **parametros** en al ruta.
+
+---
+
