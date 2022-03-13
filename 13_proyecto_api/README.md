@@ -53,5 +53,33 @@ Dentro de cada módulo voy a encontrar la siguiente estructura por capas:
 
 ## :book: configuración de Mongo DB en MongoAtlas
 
+**MongoAtlas** es **Mongo DB** en la nube.
+
+Desde [https://www.mongodb.com/](https://www.mongodb.com/) voy a **Cloud** > **Atlas**.
+
+Hay que registrarse en la web, para tener una cuenta y poder loguearse en la web.
+
+Una vez logueados, hay que **crear una organización**, desde *preferencias* > *nueva organizacion*. le doy un *nombre*, selecciono *Mongo DB Atlas* y click en *next*.
+
+En el próximo paso se pueden agregar más miembros. En este caso no agregamos.
+
+Y se finaliza agregando la organización.
+
+Ahora en la esquina superior izquierda veo la organización creada, en mi caso es **Euge**.
+
+
+Ahora voy a **projects** e inicio uno nuevo haciendo click en el botón de **new project**.
+
+Hay que darle un nombre -> **Curso JS - Nodejs**. Le doy click a **next**, de nuevo me pregunta si quiero agregar algún miembro (no agrego a nadie) y click en **create project**.
+
+
+Ahora que ya estoy en mi proyecto voy a **DataBases** -> **Build a DataBase** -> selecciono la opción gratuita (**free**).
+
+En el siguiente paso me aseguro de seleccionar la opción gratuita, ya que es una práctica.
+
+Voy a ver que el proveedor en al nube es **was** (*Amazon Web Services*). Y dónde se va a encontrar mi base de datos con respecto a la ubicación (**Sao Pablo**). El **Cluster Tier** lo dejo como está, lo mismo con **Additional Settings**. Lo que si cambio es el **Cluster Name** -> **CursoJSNodeJS** -> click en **Create Cluster**.
+
+Se aguarda unos 2 o 3 minutos hasta que se gener el cluster.
+
 
 ---
