@@ -82,4 +82,27 @@ Voy a ver que el proveedor en al nube es **was** (*Amazon Web Services*). Y dón
 Se aguarda unos 2 o 3 minutos hasta que se gener el cluster.
 
 
+## Resumiendo
+
+- Creo la organización
+
+- Dentro de la organización puedo tener varios proyctos, elijo el mio, de no tenerlo lo creo.
+
+- Dentro del proyecto voy a tener mi base de datos (cluster). Cada proyecto puede tener más de un cluster.
+
+
+## Nuevos pasos
+
+- Desde **DataBase** ya veo el cluster creado y voy a **Connect** para conectarme.
+
+- ¿ Cómo veo los datos ? Desde **Browse collections**.
+
+- Desde el panel izquierdo voy a **DataBase Access** y creo un usuario haciendo click en **Add New Database User**. Dejo como método de autenticación el **password**, y voy a completar con **user** y **password**. Y en cuanto a privilegios elijo **Read ans write to any database**. No restrinjo nada ni tengo temporary user. I click en **add user**.
+
+- Veo en mi base de datos el usuario **euge** recién generado.
+
+- Del menu de la izquierda voy a la parte de **Network Access**, donde voy a especificar quien puede conectarse y desde qué IP. Desde el sitio [https://www.whatismyip-address.com/](https://www.whatismyip-address.com/) puedo averiguar mi IP. Es una forma de mantener la seguridad en la base de dato, ya que restrinjo qien puede acceder (desde donde, por la IP). Entonces le doy click a **Add IP Address**. Y selecciono el botón **Allow access from anywhere** si no quiero limitar el acceso acorde a una dirección IP, pero si loquiero limitar voy a seleccionar el boton **Add Current IP Address**. Voy a tener un listado de **IP Access List**. Si voy a limitar el ingreso acorde al IP, hay que recordar que a veces el servidor de internet local varía la IP, por lo que al conectarse hay que chequear si se cambio, de ser asi hay que modificar en la lista. Y veo que en la lista ya lo tengo como **Active**.
+
+- Vuelvo desde el menu del lado izquierdo a **Database**.
+
 ---
