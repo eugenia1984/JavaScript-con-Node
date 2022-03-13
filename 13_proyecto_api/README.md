@@ -106,3 +106,45 @@ Se aguarda unos 2 o 3 minutos hasta que se gener el cluster.
 - Vuelvo desde el menu del lado izquierdo a **Database**.
 
 ---
+
+## :star: Estructura de carpetas y archivos
+
+- Muevo todos los archivos de práctica de JS a una nueva carpeta llamada **basics**.
+
+- Genero una nueva carpeta llamada **proyecto**.
+
+- Desde la terminar con ``` > cd proyecto``` me situo en el directorio.
+
+- Inicializo un proyecto con ```npm init -y``` y creo el **package.json**.
+
+- Dentro de *proyecto* creo una nueva carpeta **src**, donde tendre source.
+
+- Dentro de proyecto > nuevo archivo > **index.js**, donde va a estar el inicio dle servidor y donde vamos a consumir cada uno de los módulos que se agregará en *src*.
+
+- Dentro de **src** voy a agregar las carpetas: **users**, **products** , **sales** y  **database**.
+
+- Dentro de *proyecto* creo una nueva carpeta **config** donde va a estar al configuraciones del proyecto.
+
+- Dentro de *proyecto* creo una nueva carpeta **common**, los módulos comunes que van a necesitar cualquiera de los módulos del proyecto. 
+
+- Dentro de **src** y dentro de cada carpeta voy a generar los archivos necesarios: 
+
+en  *products* -> *index.js*, *controller.js*, *services.js* y *utils.js*.
+
+en *users*  -> *index.js*, *controller.js* y *services.js*
+
+en *sales* ->  *index.js*, *controller.js* y *services.js*
+
+en *database* -> *index.js*
+
+- en *config* voy a agregar un archivo *index.js*
+
+- en *common* se van a ir generando archivos en base a la necesidad (se ve más adelante).
+
+- Voy a tener un archivo que se va a encargar de gestionar las variables globales dentro del proyecto, sobre la carpeta de *proyecto* creo el archivo llamado **.env**.
+
+---
+
+## :star: Insalación de dependencias necesarias
+
+---

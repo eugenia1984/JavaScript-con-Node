@@ -6,30 +6,30 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 ##  What are you going to see ?
 
-:star: [The different kind of data in JavaScript](https://eugenia1984.github.io/JavaScript-con-Node/01_tipo_de_datos.js)
+:star: [The different kind of data in JavaScript](https://eugenia1984.github.io/JavaScript-con-Node/basics/01_tipo_de_datos.js)
 
 
-:star: [Variables](https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js)  -> var, let, const
+:star: [Variables](https://eugenia1984.github.io/JavaScript-con-Node/basics/02_variables.js)  -> var, let, const
 
-:star:  [Operators](https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js)
-
-
-:star: [Practice Exercises](https://eugenia1984.github.io/JavaScript-con-Node/04_ejercicios_de_practica.js)
-
-:star: [Flow control](https://eugenia1984.github.io/JavaScript-con-Node/05_control_de_flujo.js)  -> if, if - else, if - else if - else, switch
-
-:star: [Loops](https://eugenia1984.github.io/JavaScript-con-Node/06_ciclos.js) -> while, do - while, for, for in, for of
-
-:star: [Functions](https://eugenia1984.github.io/JavaScript-con-Node/07_funciones.js)
-
-:star: [Methods of Arrays](https://eugenia1984.github.io/JavaScript-con-Node/08_manipulacion_arrays.js) -> ForEach, push, pop, shift, map, filter, reduce, some, every, find, findIndex, includes, join, concat, sort, slice, splice
-
-:star: [Asynchrony](https://eugenia1984.github.io/JavaScript-con-Node/09_asincronismo.js) -> callbacks y then - catch
-
-:star: [Asynchrony - Promises](https://eugenia1984.github.io/JavaScript-con-Node/10_promesas.js)-> async-await y try-catch
+:star:  [Operators](https://eugenia1984.github.io/JavaScript-con-Node/basics/03_operadores.js)
 
 
-:star: [Node js concepts](https://eugenia1984.github.io/JavaScript-con-Node/11_node_js.js)
+:star: [Practice Exercises](https://eugenia1984.github.io/JavaScript-con-Node/basics/04_ejercicios_de_practica.js)
+
+:star: [Flow control](https://eugenia1984.github.io/JavaScript-con-Node/basics/05_control_de_flujo.js)  -> if, if - else, if - else if - else, switch
+
+:star: [Loops](https://eugenia1984.github.io/JavaScript-con-Node/basics/06_ciclos.js) -> while, do - while, for, for in, for of
+
+:star: [Functions](https://eugenia1984.github.io/JavaScript-con-Node/basics/07_funciones.js)
+
+:star: [Methods of Arrays](https://eugenia1984.github.io/JavaScript-con-Node/basics/08_manipulacion_arrays.js) -> ForEach, push, pop, shift, map, filter, reduce, some, every, find, findIndex, includes, join, concat, sort, slice, splice
+
+:star: [Asynchrony](https://eugenia1984.github.io/JavaScript-con-Node/basics/09_asincronismo.js) -> callbacks y then - catch
+
+:star: [Asynchrony - Promises](https://eugenia1984.github.io/JavaScript-con-Node/basics/10_promesas.js)-> async-await y try-catch
+
+
+:star: [Node js concepts](https://eugenia1984.github.io/JavaScript-con-Node/basics/11_node_js.js)
 
 :star: [Client server](https://eugenia1984.github.io/JavaScript-con-Node/12_client_server.js)
 
@@ -37,7 +37,7 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 :star: [Exercise Servidores Web](https://eugenia1984.github.io/JavaScript-con-Node/12_servidores_web)  -> CRUD (create - read - update - delete)
 
-:star: [xercise API](https://eugenia1984.github.io/JavaScript-con-Node/13_proyecto_api)
+:star: [xercise API](https://eugenia1984.github.io/JavaScript-con-Node/13_proyecto_api) where I explain about the  [PROJECT](https://eugenia1984.github.io/JavaScript-con-Node/proyecto)
 
 ---
 
@@ -87,27 +87,27 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 
 ##  ¿ Qué verás ?
 
-:star:  [Los tipos de datos en JavaScript](https://eugenia1984.github.io/JavaScript-con-Node/01_tipo_de_datos.js) -> primitivos y compuestos
+:star:  [Los tipos de datos en JavaScript](https://eugenia1984.github.io/JavaScript-con-Node/basics/01_tipo_de_datos.js) -> primitivos y compuestos
 
-:star: [Variables](https://eugenia1984.github.io/JavaScript-con-Node/02_variables.js) -> var, let, const
+:star: [Variables](https://eugenia1984.github.io/JavaScript-con-Node/basics/02_variables.js) -> var, let, const
 
-:star:  [Operadores](https://eugenia1984.github.io/JavaScript-con-Node/03_operadores.js) -> de asignación ( =, +=, -=, *=, /=, %=, **=), de comparación (>, >=, <, <=, !=, !==, ==, ===), incremento (++), decremento (--), lógicos (&&, ||, !), concatenacion (+), ternario, desestructuración, typeof 
+:star:  [Operadores](https://eugenia1984.github.io/JavaScript-con-Node/basics/03_operadores.js) -> de asignación ( =, +=, -=, *=, /=, %=, **=), de comparación (>, >=, <, <=, !=, !==, ==, ===), incremento (++), decremento (--), lógicos (&&, ||, !), concatenacion (+), ternario, desestructuración, typeof 
 
-:star: [Ejercicios de practica](https://eugenia1984.github.io/JavaScript-con-Node/04_ejercicios_de_practica.js)
+:star: [Ejercicios de practica](https://eugenia1984.github.io/JavaScript-con-Node/basics/04_ejercicios_de_practica.js)
 
-:star:  [Control de flujo](https://eugenia1984.github.io/JavaScript-con-Node/05_control_de_flujo.js) -> if, if - else, if - else if - else, switch
+:star:  [Control de flujo](https://eugenia1984.github.io/JavaScript-con-Node/basics/05_control_de_flujo.js) -> if, if - else, if - else if - else, switch
 
-:star:  [Ciclos](https://eugenia1984.github.io/JavaScript-con-Node/06_ciclos.js) -> while, do - while, for, for in, for of
+:star:  [Ciclos](https://eugenia1984.github.io/JavaScript-con-Node/basics/06_ciclos.js) -> while, do - while, for, for in, for of
 
-:star: [Funciones](https://eugenia1984.github.io/JavaScript-con-Node/07_funciones.js)
+:star: [Funciones](https://eugenia1984.github.io/JavaScript-con-Node/basics/07_funciones.js)
 
-:star: [Manipulacion de arrays](https://eugenia1984.github.io/JavaScript-con-Node/08_manipulacion_arrays.js) -> ForEach, push, pop, shift, map, filter, reduce, some, every, find, findIndex, includes, join, concat, sort, slice, splice
+:star: [Manipulacion de arrays](https://eugenia1984.github.io/JavaScript-con-Node/basics/08_manipulacion_arrays.js) -> ForEach, push, pop, shift, map, filter, reduce, some, every, find, findIndex, includes, join, concat, sort, slice, splice
 
-:star: [Asincronismo](https://eugenia1984.github.io/JavaScript-con-Node/09_asincronismo.js) -> callbacks y then - catch
+:star: [Asincronismo](https://eugenia1984.github.io/JavaScript-con-Node/basics/09_asincronismo.js) -> callbacks y then - catch
 
-:star: [Asincronismo - promesas](https://eugenia1984.github.io/JavaScript-con-Node/10_promesas.js)->  sync-await y try - catch
+:star: [Asincronismo - promesas](https://eugenia1984.github.io/JavaScript-con-Node/basics/10_promesas.js)->  sync-await y try - catch
 
-:star: [Node js conceptos](https://eugenia1984.github.io/JavaScript-con-Node/11_node_js.js)
+:star: [Node js conceptos](https://eugenia1984.github.io/JavaScript-con-Node/basics/11_node_js.js)
 
 :star: [Desarrollo cliente servidor](https://eugenia1984.github.io/JavaScript-con-Node/12_client_server.js)
 
@@ -115,7 +115,7 @@ Aca podrán ver la teoría y la práctica del curso de Udemy:  **JavaScript con 
 
 :star: [Ejercicio Servidores Web](https://eugenia1984.github.io/JavaScript-con-Node/12_servidores_web) -> realizo un CRUD
 
-:star: [Ejercicio API](https://eugenia1984.github.io/JavaScript-con-Node/13_proyecto_api)
+:star: [Ejercicio API](https://eugenia1984.github.io/JavaScript-con-Node/13_proyecto_api) donde explico lo que es el [PROYECTO](https://eugenia1984.github.io/JavaScript-con-Node/proyecto)
 
 
 ## Tecnologías 🛠️
