@@ -392,4 +392,29 @@ module.exports.Config = {
 };
 ```
 
+Y en el **index.js** que esta a la altura de la raiz:
+
+```JavaScript
+const {Config} = require('../config/index');
+```
+
+Así ahora lo puedo utilizar:
+
+
+En el if de si no tengo ya una conexion a mi base de datos:
+
+```JavaScript
+const client = new MongoClient(Config.mongoUri);
+```
+
+Y fuera del if, es decir si ya tengo la conexion a la base de datos:
+
+```JavaScript
+const db = connection.db(Config.mongoDbname);
+```
+
+---
+
+## :stat: Modulo productos
+
 ---
