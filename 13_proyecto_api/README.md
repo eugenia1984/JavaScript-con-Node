@@ -417,6 +417,8 @@ const db = connection.db(Config.mongoDbname);
 
 ## :star: Modulo productos
 
+### :star: Index.js
+
 
 Voy al **index.js** de **products**.
 
@@ -482,5 +484,61 @@ Como ahora le pasamos la aplicación al módulo, el modilo index.js de products 
 
 
 Entonces ya tenemos las rutas iniciales con las que se trabajaran en el modulo de productos. Pero en el archivo **controller.js** hay que agregar la configuración con las funciones controladoras que se encargan de controlar cada peticiñon y respuesta de cada ruta; por lo que hay que separar estas funciones en el archivo controlador.
+
+
+### :star: Products - capa controller.js
+
+Tenemos el problema que todavia no responde nada y además hay que delegar la responsabilidad de las rutas a este archivo y sacarselas al index.js.
+
+
+Expongo el archivo (module.exports) y agrego la *propiedad* OroductsController, su *valor* es un Object, que tiene como clave el nombre e la función controladora y como clave la función controladora en si.
+
+```JavaScript
+module.exports.ProductsController = {
+        // Para obtener la lista de productos
+        getProducts: (req, res) => {},
+        // Para obtener un producto determinado
+        getProduct: (req, res) => {},
+        // para crear un producto 
+}
+```
+
+Ahora debo configurarlo el en **index.js** principal del modulo
+
+Primero lo exporto:
+
+```JavaScript
+const { ProductsController } = require('./controller');
+```
+
+ProductsController es la clave que está exponiendo el controlador (en controller.js).
+
+Y ahora debo configurarlo en cada una de las rutas, las tratamos como callbacks, sin ejecutarse
+
+```JavaScript
+module.exports.ProductsAPI = (app) => {
+  router
+    .get('/', ProductsController.getProducts)
+    .get('/:id', ProductsController.getProduct)
+    .post('/', ProductsController.createProduct)
+
+  app.use('/api/products', router);
+}
+```
+
+Y ahora en el controller.js hay que configurar las respuestas, antes voy a trabajr en la capa de **services.js** para comunicarme con la base de datos y hacer que los servicios expongan las funciones necesarias para obtener o crear los productos.
+
+---
+
+### :star: Products - Capa de servicios
+
+```JavaScript
+```
+
+```JavaScript
+```
+
+```JavaScript
+```
 
 ---
