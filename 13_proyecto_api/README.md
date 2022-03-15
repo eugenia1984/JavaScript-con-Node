@@ -295,4 +295,46 @@ Y ahora si por consola veo:
 
 # :book: Modulo de Database
 
+Vamos a escribir el archivo que nos permita conectarnos a la base creada anteriormente en MongoDB Atlas. Para ellos voy al directorio de **database** al archivo **index.js**.
+
+Para trabajar la conexion se va a utilizar la dependencia ya instalada **mongodb**.
+
+Primero me traigo el paquete de mongodb para poder utilizarlo y aplico desestructuración, para solo traer **MongoClient** 
+
+```JavaScript
+const { MongoClient} = require('mongodb');
+```
+
+Hay servidores de Base de Datos.
+
+Y hay clientes que pueden conectarse a esos servidores. Entonces, voy a tener un cliente que me va a servir para conectarme con el servidor de Mongo Atlas.
+
+También me traigo el paquete de debug y recuerdo que va a necesitar una String como parametro (por eso app:module-database).
+
+```JavaScript
+const debug = require('debug')('app:module-database');
+```
+
+- Este archivo se va a encargar de *exportar* una *función* que nos devuelva la *conexión a la base de datos* y a partir de ahi poder trabajar en cada uno de los servicios del módulo con esa conexión.
+
+**MongoDB** es una base de datos *no relacional* (noSQL) y *documental* (no existen tablas que almacenan datos y esas tablas están relacionadas), acá hay **colecciones de datos** y las mismas tienen **documentos** y dentro de cada documento almacenan la **información** que tiene el formato **JSON**.
+
+Por ello la función va a recibir como parámetro **collection** que es esta colección de datos y me va a retornar una **nueva promesa** que recibe un **callback** con los parametros **resolve** (res) y **reject** (rej).
+
+Dentro hay que escribir el codigo necesario para la conexion a la base de datos. Voy a utilizar el patron **SINGLETON** que permite no generar tantas instancias de la conexion.
+
+Como es **código asíncrono** voy a utilizar try{}catch(error){}.
+
+Voy a resolver las promesas dentro de la función con **await** y va a necesitar que la función donde se trabaje tengamos **async**.
+
+```JavaScript
+module.exports.Database = (collection) => new Promise( sync (resolve, reject) => {
+
+});
+```
+
+
+```JavaScript
+
+```
 ---
