@@ -121,13 +121,13 @@ Se aguarda unos 2 o 3 minutos hasta que se gener el cluster.
 
 - Dentro de proyecto > nuevo archivo > **index.js**, donde va a estar el inicio dle servidor y donde vamos a consumir cada uno de los módulos que se agregará en *src*.
 
-- Dentro de **src** voy a agregar las carpetas: **users**, **products** , **sales** y  **database**.
+- Dentro de **src** voy a agregar las carpetas: **users**, **products**, **sales**,  **database**, **config** y **common**.
 
-- Dentro de *proyecto* creo una nueva carpeta **config** donde va a estar al configuraciones del proyecto.
+- Dentro de *src* en la carpeta **config**  va a estar la configuraciones del proyecto. Agrego un archivo *index.js*
 
-- Dentro de *proyecto* creo una nueva carpeta **common**, los módulos comunes que van a necesitar cualquiera de los módulos del proyecto. 
+- Dentro de *src* en la **common**, van a estar los módulos comunes que van a necesitar cualquiera de los módulos del proyecto. Los archivos se van a ir generando en base a la necesidad (se ve más adelante).
 
-- Dentro de **src** y dentro de cada carpeta voy a generar los archivos necesarios: 
+- Dentro de *src* y dentro de cada carpeta de *users*, *products*, *sales*,  *database* voy a generar los archivos necesarios: 
 
 en  *products* -> *index.js*, *controller.js*, *services.js* y *utils.js*.
 
@@ -137,14 +137,162 @@ en *sales* ->  *index.js*, *controller.js* y *services.js*
 
 en *database* -> *index.js*
 
-- en *config* voy a agregar un archivo *index.js*
-
-- en *common* se van a ir generando archivos en base a la necesidad (se ve más adelante).
 
 - Voy a tener un archivo que se va a encargar de gestionar las variables globales dentro del proyecto, sobre la carpeta de *proyecto* creo el archivo llamado **.env**.
 
 ---
 
 ## :star: Insalación de dependencias necesarias
+
+En la terminal instalo las dependencias necesarias:
+```
+ npm i express mongodb  http-errors dotenv debug excel4node 
+```
+
+  
+
+Y también instalo la dependencia *nodemon* pero en desarrollo:
+
+```
+npm i -D nodemon
+```
+
+Y en el **package.json** ahora veo todas las dependencias instaladas:
+
+```JavaScript
+"dependencies": {
+"debug": "^4.3.3",
+"dotenv": "^16.0.0",
+"excel4node": "^1.7.2",
+"express": "^4.17.3",
+"http-errors": "^2.0.0",
+"mongodb": "^4.4.1"
+},
+"devDependencies": {
+"nodemon": "^2.0.15"
+}
+```
+
+Y en **scripts** voy a agregar un comando determinado para arrancar el servidor, en **index.js**:
+
+```
+"scripts": {
+"dev": "nodemon index.js"
+},
+```
+
+Entonces para ejecutarlo -> ``` npm run dev```
+
+Y comienza nodemon
+
+---
+
+## :star:  Inicio del servidor
+
+En el **index.js**
+
+```JavaScript
+// Me traigo express y almaceno en constante
+const express = require('express');
+// En vez de usar console log, voy a usar al dependencia debug
+const debug = require('debug');
+const app = express();
+
+//Para que reciba datos en el request
+app.use(express.json());
+
+// Hago que el servidor este a la escucha
+app.listen(3000, () => {
+        //En vez de usar console log, utilizo la dependencia debug y estara escuchando el puerto indicado, en este caso el 3000
+   debug(`Servidor escuchando en el puerto ${3000}`) 
+});
+```
+
+En el archivo **.env** voy a configurar algunas **variables de enterno**:
+
+```PORT=3000``` para que esté escuchando el puerto 3000
+
+Para poder utilizarla voy a **src** > **config** > **index.js**
+
+```JavaScript
+require('dotenv').config();
+// para poder utilizar este archivo en otros archivos usamos module.exports, hay que recordar que siempre retorna Objects, entonces trato a module.esports como un objeto y le agrego una propiedad (Config), que es la clave de la propiedad, y como valor le agrego un Object con las variables de entorno
+module.exports.Config = {
+  port: process.env.PORT,
+};
+```
+
+
+En el **index.js** del proyecto raiz, utilizo desestructuración para traerme la variable del puerto **3000**:
+
+```JavaScript
+const { Config } = require('./src/config/index');
+```
+
+Y la rremplazo aca:
+
+```JavaScript
+app.listen(Config.port, () => {
+  debug(`Servidor escuchando en el puerto ${Config.port}`)
+});
+```
+
+De modo que si en otro momento quiero que el puerto sea otro distinto al 3000, lo cambio solo en **.env** y al trabajar con modulos se actualiza en los demas lados.
+
+---
+
+
+Si en terminal ingreso: 
+
+```netstart -ano | findstr :3000 ```
+
+```taskill /PID <aca el puerto que escucha> /f```
+
+en mi caso me dio error busque en [stackoverlow](https://stackoverflow.com/questions/39632667/how-do-i-kill-the-process-currently-using-a-port-on-localhost-in-windows) y enocntre este comando:
+
+```npx kill-port 3000```
+
+Para más información -> [https://www.npmjs.com/package/kill-port](https://www.npmjs.com/package/kill-port)
+
+
+Pero si hago nuevamente ```npm run dev ``` todavía no voy a ver en la terminal el mensaje de que se está escuchand el servidor. Todavía falta unas configuraciones más.
+
+En el **package.json**:
+
+```
+  "scripts": {
+    "dev": "set DEBUG=app:* & nodemon index.js"
+  },
+```
+
+De modo que cada vez que ahora ejecutemos ```npm run dev ``` va a setear la variable y ejecutar el proceso.
+
+Si se trabaja en Linux solo hay que agregar ```DEBUG=app``` sin el set adelante.
+
+**app** se refiere a toda la aplicación.
+
+
+Y en el **index.js** de la raiz completo al parte de la constante **debugg**, ya que una vez que lo requiero me devuelve una función a la cual le paso como parámetro el String que muestra donde estoy ubicado (utilizo **main**, sino podría ponerle **server**)
+
+```JavaScript
+const debug = require('debug')('app:main');
+```
+
+Para ver el mensaje, voy a tener primero que reiniciar el servidor, con **ctrl** + **c** y luego **S**
+
+
+Nuevamente corro el servidor con ```npm run dev```
+
+Y ahora si por consola veo:
+
+```
+[nodemon] starting `node index.js`
+  app:main Servidor escuchando en el puerto 3000 +0ms
+```
+
+---
+
+
+# :book: Modulo de Database
 
 ---
