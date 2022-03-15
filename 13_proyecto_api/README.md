@@ -327,14 +327,69 @@ Como es **código asíncrono** voy a utilizar try{}catch(error){}.
 
 Voy a resolver las promesas dentro de la función con **await** y va a necesitar que la función donde se trabaje tengamos **async**.
 
-```JavaScript
-module.exports.Database = (collection) => new Promise( sync (resolve, reject) => {
 
+Hay que tener cuidado, si se generan muchas conexiones el servidor se puede saturar, para evitar que se realice una conexion a cada instante es que se usa el patron **singleton**, asi caa vez que se realice una nueva petición a la base de datos se fija y...
+
+... si no existe se crea la conexión.
+
+... pero si se identifica que ya hay una conexión, se utiliza esa misma conexión para hacer la petición. Asi no se crea otra nueva petición por cada conexión necesaria. Hay **una sola conexión con todas las peticiones**.
+
+
+```JavaScript
+// primero defino mi variable connection como global para utilizarla dentro del try-catch y como debo inicializarla la defino null
+var connection = null;
+
+module.exports.Database = (collection) => new Promise( sync (resolve, reject) => {
+  try {
+  //Si no existe conexion que me genere una
+    if (!connection) {
+    // me construyo el cliente en base a la documentacion de MongoDB, este cleinte recibe un parametro (la url de consulta)
+      const client = new MongoClient();
+    //Devuelve una conexion que es asincrona por eso el await
+      connection = await client.connect();
+      //aprovecho el modulo debug para enviar el mensaje de que la conexion se realizo correctamente
+      debug('Nueva conexion realizada con MongoDB Atlas');
+    }
+    //En el caso de que ya exista una conexion debo reutilizarla y traer la base de datos de la misma. Dicha conexion la voy a alamcenar en la variable db
+   // con el debug aviso que reutilizo conexion
+    debug('Reutilizando conexion');
+    // connection.db() debe recibir como parametro la url de consulta para conectarse a la base de datos
+    const db = connection.db();
+    // resuelvo la coleccion de datos que obtengo con resolve, entonces la base de datos (db) nos va a devolver la collection (collection) -> es la que recibe como parametro al principio, antes de la new Promise
+    resolve(db.collection(collection))
+  } catch (error) {
+    //Manejo el error
+    reject(error);
+  }
 });
 ```
 
+Debo volver a MongoDb Atlas para tener los datos de la URL para conectarme a mi base de datos, que lo voy a necesitar para pasar como parametro en **new MongoClient()** y en **connection.db()**
+
+En **DataBase**, en el **cluster** hago click en **connect** > **connect your application**.
+
+Y en la parte de **Add your connection string into your application code** tengo el String con la conexión. La puedo copiar haciendo click en el icono del clikpboard y lo pego en **.env** porque quiero que sea una variable de configuración.
+
+Luego de ```mongodb+srv://``` voy a tener el USUARIO (**euge**) y a continuacion el **password** 
+```
+MONGO_URI=mongodb+srv://euge:euge1984@cursojsnodejs.wdb4j.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+```
+
+Y también debo agregar el nombre de la base de datos a la que me quiero conectar, voy a ponerle de nombre **inventario**.
+
+```MONGO_DBNAME=inventario```
+
+Ahora debo agregarlos en el **index.js** dentor de **config**.
+
+
+Para tenerlo disponible para cualquier otro modulo.
 
 ```JavaScript
-
+module.exports.Config = {
+  port: process.env.PORT,
+  mongoUri: process.env.MONGO_URI,
+  mongoDbname: process.env.MONGO_DBNAME,
+};
 ```
+
 ---
