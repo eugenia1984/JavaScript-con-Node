@@ -415,6 +415,72 @@ const db = connection.db(Config.mongoDbname);
 
 ---
 
-## :stat: Modulo productos
+## :star: Modulo productos
+
+
+Voy al **index.js** de **products**.
+
+
+Voy a utilizar la funcionalidad **router** de **express*, que permite manejar las rutas del módulo, independientemente de la aplicación.
+
+Voy a hacer el archivo exportable y le agrego la *propiedad* ProductsAPI que tiene como *valor* una función, la cual recibirá un parámetro *app* -la aplicacion para poder configurar el modulo-.
+
+En vez de tenerlo configurado en el index.js del archivo raiz lo voy a tener configurado aca.
+
+
+```JavaScript
+module.exports.ProductsAPI = (app) => {
+  //defino las rutas del modulo producto
+   router
+       // mi primer get sin parametro
+       .get('/', (req, res) => {})
+        // mi segundo get, que va a recibir un id como parametro, para obtener un producto por id
+       .get('/:id', (req, res) => {})
+        // un post que no recibe parametro
+       .post('/', (req, res) => {})
+
+   app.use('/api/products', router);
+}
+```
+
+Ahora hay que configurar este router dentro de la aplicación.
+
+**app.use** configura en una ruta todo el router, es decir todas las rutas antes agregadas.
+
+Porque el modulo recibe como parametro una app y a esa misma le aplico el metodo .use()
+
+```app.use('/api/products', router);```
+
+Asi nuestra aplicación va a mostrar la URL : api/products, y dentro de la misma **configuro** el router (es decir que las rutas agregadas mediante las peticiones ge y post van a estar disponibles).
+
+¿Y cómo las hace disponibles ?
+
+Lo que hace es concatena la URL con cada ruta, por ejemplo:
+
+```router.get('/', (req, res) => {})``` ->  http://localhost:3000/api/products/
+
+```router.get('/:id', (req, res) => {})``` -> http://localhost:3000/api/products/23  (23 es un id)
+
+
+¿ Cómo agrego este archivo a mi aplicación?
+
+Debo exportar este modulo para poder utilizarlo en otro importandolo.
+
+Entonces en el **index.js** de mi raiz:
+
+```JavaScript
+const { ProductsAPI } = require('./src/products/index');
+```
+
+Y donde necesito los modulos utilizo ProductsAPI que es una función  que recibe como parametro una aplicación (es decir la const **app** = express(); )
+
+```JavaScript
+ProductsAPI(app);
+```
+
+Como ahora le pasamos la aplicación al módulo, el modilo index.js de products agarra esa aplicación y configura la ruta de la aplicación, donde va a cargar todas las rutas nombradas anteriormente on router.get() o router.post().
+
+
+Entonces ya tenemos las rutas iniciales con las que se trabajaran en el modulo de productos. Pero en el archivo **controller.js** hay que agregar la configuración con las funciones controladoras que se encargan de controlar cada peticiñon y respuesta de cada ruta; por lo que hay que separar estas funciones en el archivo controlador.
 
 ---
