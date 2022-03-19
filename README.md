@@ -37,7 +37,7 @@ Here you can see the theory and practice of the Udemy's course **JavaScript with
 
 :star: [Exercise Servidores Web](https://eugenia1984.github.io/JavaScript-con-Node/12_servidores_web)  -> CRUD (create - read - update - delete)
 
-:star: [xercise API](https://eugenia1984.github.io/JavaScript-con-Node/13_proyecto_api) where I explain about the  [PROJECT](https://eugenia1984.github.io/JavaScript-con-Node/proyecto)
+:star: [Exercise API](https://eugenia1984.github.io/JavaScript-con-Node/13_proyecto_api) where I explain about the  [PROJECT](https://eugenia1984.github.io/JavaScript-con-Node/proyecto)
 
 ---
 

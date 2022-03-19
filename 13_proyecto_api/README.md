@@ -528,17 +528,165 @@ module.exports.ProductsAPI = (app) => {
 
 Y ahora en el controller.js hay que configurar las respuestas, antes voy a trabajr en la capa de **services.js** para comunicarme con la base de datos y hacer que los servicios expongan las funciones necesarias para obtener o crear los productos.
 
+
+
+
 ---
 
-### :star: Products - Capa de servicios
+### :star: Products - Capa de servicios (services.js)
+
+
+Primero debo traerme el modulo de la base de datos, ya que en est capa de servicios vamos a gestionar todos los datos y la comunicacion con la base de datos.
+
+Y desestructuro el *database*.
 
 ```JavaScript
+const {} = require('../database/index');
 ```
 
-```JavaScript
-```
+
+Luego tengo las funciones que manejaran los datos:
 
 ```JavaScript
+const COLLECTION = 'products';
+// Hay que recordar que DATABASE me trae una COLECCION de datos y que es ASYNC, por lo que uso AWAIT
+// Para traer todos los datos de la base de datos
+const getAll = async () => {
+  const collection = await Database(COLLECTION);
+  // aca voy a utilizar el .find que me brinda MongoDB (es para hacer CONSULTAS en MongoDB) que me devuelve todo lo que encuentra en la coleccion. Find recibe como parametro un Object en el cual se puede establecer los parametros bajo los que queremos establecer la consulta, sino se establece como vacío.
+  // Hay que pasar a un arreglo lo que nos devuela .find() -> .toArray()
+  return await collection.find({}).toArray;
+}
+```
+
+Para exponer este **.getAll()**, en **module.exports** agrego la propiedad **ProductsServices** e invoco a **getAll**.
+
+Hay que onservar que es un Object, pero dentro no tiene key - value, si le paso directamente la referencia de la variable va a tomar como mismo nombre el que encuentra (**getAll**) y como valor expone la función .getAll().
+
+
+```JavaScript
+module.exports.ProductsServices = {
+  getAll
+}
+```
+
+Ahora debo crear la función para **encontrar los productos por el ID**. En este caso voy a utilizar otro metodos que tiene Mongo DB, el **.findOne()**, que realiza la búsqueda acorde al dato que le paso como parametro, en este caso buscamos por **id** y acorde a la documentacion de MongoDB debe escribirse con un guion bajo delante.
+
+
+Pero aca todavia MongoDB no me va a poder hacer la consulta y devolver un resultado por que el _id va a ser un String y necesita recibir un Object ID.
+
+Por eso voy a tener mi constante  {ObjectId}
+
+```JavaScript
+const { ObjectId } = require('mongodb');
+```
+
+
+```JavaScript
+
+const getById = async (id) => {
+  const collection = await Database(COLLECTION);
+  return collection.findOne({ _id: ObjectId(id) });
+}
+```
+
+Defino una nueva constante que se encargará de **crear un nuevo producto**.
+
+En este caso voy a utilizar otro método de MongoDB : **.insertOne()** que va a almacenar los datos del nuevo producto, va a recibir como parametro **product** que es el mismo parametro que recibe la funcion anonima; y todo esto lo almaceno en la variable **result**  y lo voy a estar mostrando con el **return**.
+
+En este **resultado** que retornamos va a llegar también una clave **insertedId** asi nos devuelve el id del objeto que se acaba de agregar.
+
+
+```JavaScript
+const create = async (product) => {
+  const collection = await Database(COLLECTION);
+  let result = collection.insertOne(product);
+  return result,insertedId;
+}
+```
+
+
+Entonces ahora si expongo mis 3 funcones para traer todos los productos, traer el producto por id y crear un producto.
+
+```JavaScript
+module.exports.ProductsServices = {
+  getAll,
+  getById,
+  create
+}
+```
+
+---
+
+Hay que agregar el **service** a la capa **controller**, para que el controlador pueda retornar los resultados que se hagan en cada petición.
+
+
+### :star: Products - Capa Controller.js
+
+Es en controller donde voy a verificar si tengo algún error y de tenerlo ahi mismo lo manejo
+
+Hay que recordar que **.getAll()** es asincrono, se comporta como una promesa, por lo que necesito un **await** y el **async** en su función envolvente.
+
+```JavaScript
+const debug = require('debug')('app:module-products-controller');
+const { response } = require('express');  
+const { ProductsService } = require('./services');
+
+module.exports.ProductsController = {
+  getProducts: async (req, res) => {
+    try {
+      // para almacenar la lista de productos que me traigo
+      let products = await ProductsService.getAll();
+      // retorno la respuesta
+      response.json(products);
+    } catch (error) {
+      // quiero saber cual fue el error, uso el modulo de debug
+      debug(error);
+      // mando al respuesta
+      res.status(500).json({ message: 'Internar server error' });
+    }
+  },
+  getProduct: (req, res) => {},
+  createProduct: (req, res) => {},
+}
+```
+
+Y asi quedo **getProducts**, luego tengo que modificar **getProduct** y **createProduct**.
+
+Pero antes voy a hacer una prueba en Postman
+
+Y voy a realizar una petición **GET** -> ```http://localhost:3000/api/products
+
+
+Veo que me conecto pero no traigo nada porque no tengo productos cargados, por ello ahora trabajo en **createProducts**
+
+
+```JavaScript
+createProduct: async (req, res) => {
+  try {
+    // obtengo el body
+    const { body } = req;
+    const insertedId = await ProductsService.create(body);
+    res.json(insertedId);
+  } catch (error) {
+    debug(error);
+    res.status(500).json({ message: 'Internar server error' });
+  }
+},
+```
+
+Vuelvo a **Postman** para hacer un **POST** -> ```http://localhost:3000/api/products ```
+
+Y en > **Body** > selecciono *raw* y *JSON*
+
+Y agrego:
+
+```
+{
+    "name": "camiseta",
+    "precio": 15,
+    "cantidad": 200
+}
 ```
 
 ---
