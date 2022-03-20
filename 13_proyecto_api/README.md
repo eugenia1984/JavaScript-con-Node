@@ -1007,3 +1007,13 @@ Hay que ver el almacenamiento de referencias de una base de datos en Mongo DB, c
 
 
 ---
+
+## :star: Despliegue de la app
+
+- Desde la raiz genero el nuevo archivo **.gitignore**, para que al subir las cosas al hacer el despliegue no subimos la carpeta de node_modules.
+
+En *.gitignore* : ```node_modules```
+
+Si en vez de pasarlo por git lo paso como archivos comprimidos, no voy a poner la carpeta de node_modules.
+
+--
