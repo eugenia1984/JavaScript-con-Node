@@ -1068,4 +1068,63 @@ UsersAPI(app);
 NotFoundAPI(app);
 ```
 
---
+---
+
+## :star: Despliegue de la APP
+
+- En [https://www.heroku.com/](https://www.heroku.com/) hay que crearse una cuenta gratuita.
+
+- Elegir **create a new app** y ponerle *nombre* y *elejir la region*, dar click en **create**
+
+- Nos dirigimos a la seccion **deployment method** y nos aseguramos estar en **heroku git** y seguimos los pasos:
+
+-Piden tener instalado **heroku CLI**
+
+-Hay que seguir todos los pasos:
+
+``` > heroku login```
+
+``` <presiono cualquier tecla para abrir el loguin en el navegador>```
+
+-le doy click a **login** y en la terminal me dice que ya me loguee.
+
+
+- tengo que crear un nuevo repositorio en git para el proyecto
+
+``` <me voy a mi carpeta> ```
+
+``` > git init```
+
+``` > heroku git:remote -a <elNombreQueLePuseEnHerokuALaApp>```
+
+-Enter
+
+- Agrego los archivos y commiteo
+
+``` > git add .```
+
+``` > git commit -m " el mensaje" ```
+
+``` > git push heroku master```
+
+- Nos va a dar una URL, con CTRL+CLICK la abrimos.
+
+- Nos da un error, entonces en terminal ```> heroku logs --tail ```
+
+- En el **package.json** Heroku necesita tener un script start, entonces agrego:
+
+``` 
+"scripts": {
+  "start": "node index.js"
+} 
+```
+
+- Agrego las modificaciones y commiteo
+
+``` > git add .```
+
+``` > git commit -m " agregando el script de start" ```
+
+``` > git push heroku master```
+
+---
