@@ -125,7 +125,7 @@ Se aguarda unos 2 o 3 minutos hasta que se gener el cluster.
 
 - Dentro de *src* en la carpeta **config**  va a estar la configuraciones del proyecto. Agrego un archivo *index.js*
 
-- Dentro de *src* en la **common**, van a estar los módulos comunes que van a necesitar cualquiera de los módulos del proyecto. Los archivos se van a ir generando en base a la necesidad (se ve más adelante).
+- Dentro de *src* en la **common**, van a estar los módulos comunes que van a necesitar cualquiera de los módulos del proyecto. Los archivos se van a ir generando en base a la necesidad (se ve más adelante). Voy a crear el archivo **response.js**
 
 - Dentro de *src* y dentro de cada carpeta de *users*, *products*, *sales*,  *database* voy a generar los archivos necesarios: 
 
@@ -688,5 +688,131 @@ Y agrego:
     "cantidad": 200
 }
 ```
+
+Y nuevamente en **controller.js** voy a hacer la función para agregar un producto:
+
+```JavaScript
+getProduct: async (req, res) => {
+  try {
+    const { params : { id } } = req;
+  let product = await ProductsService.getById(id); 
+  res.json(product); 
+  } catch (error) {
+    debug(error);
+    res.status(500).json({ message: 'Internar server error' });
+  }
+},
+``` 
+
+Para probarlo en postman primero tengo que crearme un producto:
+
+GET : http://localhost:3000/api/products
+
+Luego veo los productos para saber que ***id** tiene el creado
+
+POST: http://localhost:3000/api/products
+
+Y ahora busco el producto por el id:
+
+GET: http://localhost:3000/api/products/-elNumeroDeIdQueCopie-
+
+Y si esta todo bien veo un JSON con los datos ingresados
+
+---
+
+## Modulo common
+
+En **response.js** tengo que hacer el standard a nuestras respuestas, para todo lo que envíe la API REST.
+
+Con **http-errors** solo puedo gestionar los ERRORES, no las respuestas exitosas; solo para las respuestas del 400 en adelante y del 500 en adelante.
+
+Voy a exponer el **module.exports** con **.Response** y tendrá dos propiedades:
+
+- sucess -> respuesta exitosa. Es una función que recibe como 1er parametro el Object respuesta, para estructurarlo dentro, como 2do parametro un status, como 3er parametro un mensaje y como 4to parametro el body. Y por si no recibo algún parametro le agrego valores por defecto.
+
+- error -> es una función que recibe como 1er parametro la respuesta y como 2do parametro el error (al error le doy como valor por defecto null, por si no me lo pasan en la consulta).
+
+
+```JavaScript
+module.exports.Response = {
+  success: (res, status=200, message="OK", body={}) => {
+    res.status(status).json({ message, body});
+  },
+  error: (res, erro = null) => {
+    //valido si existe un error como parametro lo utilizo
+    // sino uso el que creo con InternalServerError
+    const { statusCode, message } = error ? error : new createError.InternalServerError();
+    res.status(statusCode).json({message})
+  }
+};
+```
+
+- Ahora este standar de respuestas las tengo que implementar en mi controller de products
+
+Primero importo y desestructuro Response:
+
+```JavaScript
+const { Response } = require('../common/response');
+```
+
+
+Y modifico **getProducts** es la parte de respuesta exitosa o en el caso de error:
+
+```JavaScript
+getProducts: async (req, res) => {
+  try {
+    // para almacenar la lista de productos que me traigo
+    let products = await ProductsService.getAll();
+    // retorno la respuesta
+    Response.success(res, 200, 'Lista de productos', products);
+  } catch (error) {
+    // quiero saber cual fue el error, uso el modulo de debug
+    debug(error);
+    // mando al respuesta
+    Response.error(res);
+  }
+}
+```
+
+También modifico la respuesta en **getProduct**.
+
+En el caso de que el **id** consultado no este en mi lista de productos debo enviarle una respuesta para avisarle que no existe; para ello me tengo que traer el modulo para los errores -> ``` const createError = require('http-errors'); ```
+
+```JavaScript
+getProduct: async (req, res) => {
+    try {
+      const { params : { id } 
+      } = req;
+      let product = await ProductsService.getById(id); 
+      if (!product) {  // si no existe el producto que consultan por id
+        Response.error(res, new createError.NotFound());       
+      }
+      Response.success(res, 200, `Producto ${id}`, products);
+    } catch (error) {
+      debug(error);
+      Response.error(res);
+    }
+  },
+```
+
+Y lo mismo para **createProduct**, en este voy a tener que validar que pasa si el body esta vacio.
+
+```JavaScript
+ createProduct: async (req, res) => {
+    try {
+      const { body } = req; // obtengo el body
+      if (!body || Object.keys(body).length === 0) {
+        Response.error(res, new createError.BadRequest());
+      } else {
+        const insertedId = await ProductsService.create(body);
+        Response.success(res, 201, 'Producto agregado', insertedId);
+      }
+    } catch (error) {
+      debug(error);
+      Response.error(res);
+    }
+  },
+```
+
 
 ---
