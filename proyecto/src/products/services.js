@@ -15,8 +15,13 @@ const getById = async (id) => {
 
 const create = async (product) => {
   const collection = await Database(COLLECTION);
-  let result = collection.insertOne(product);
+  let result = await collection.insertOne(product);  //insertOne es asincrono
   return result.insertedId;
+}
+
+const generateReports = async() => {
+  let products = await getAll();  // para tener todos mis productos
+  
 }
 
 module.exports.ProductsServices = {

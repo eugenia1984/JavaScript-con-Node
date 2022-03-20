@@ -21,8 +21,10 @@ module.exports.ProductsController = {
       let product = await ProductsService.getById(id); 
       if (!product) {  // si no existe el producto que consultan por id
         Response.error(res, new createError.NotFound());       
+      } else {
+        Response.success(res, 200, `Producto ${id}`, products);
       }
-      Response.success(res, 200, `Producto ${id}`, products);
+      
     } catch (error) {
       debug(error);
       Response.error(res);
