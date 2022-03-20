@@ -1,5 +1,6 @@
 const { ObjectId } = require('mongodb');
 const { Database } = require('../database/index');
+const { ProductsUtils } = require('./utils');
 
 const COLLECTION = 'products';
 
@@ -19,13 +20,41 @@ const create = async (product) => {
   return result.insertedId;
 }
 
-const generateReports = async() => {
+const update = async (id, newValue) => {
+  const collection = await Database(COLLECTION);
+  const filter = { _id: ObjectId(id)};
+  const options = { upsert:false};
+  const updateProduct = {
+    $set: {
+      ...newValue
+    }
+  };
+  const result = await collection.updateOne(filter, updateProduct, options)
+  return await getById(id);
+}
+
+const deleted = async (id) => {
+  const collection = await Database(COLLECTION);
+  const query = { _id: ObjectId(id)};
+  const product = await getById(id);
+  const result = await collection.deleteOne(query);
+  if (result.deletedCount === 1) {
+    return product;
+  } else {
+    return 0;
+  }
+}
+
+const generateReports = async( name, res) => {  // recibo el nombre del archivo y la respuesta como params
   let products = await getAll();  // para tener todos mis productos
-  
+  ProductsUtils.excelGenerator(products, name, res );
 }
 
 module.exports.ProductsServices = {
   getAll,
   getById,
-  create
+  create,
+  update,
+  deleted,
+  generateReports
 }

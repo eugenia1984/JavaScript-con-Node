@@ -873,16 +873,70 @@ module.exports.ProductsUtils = {
 
 Para implementar la utilidad (utils.js) voy a service.js de products
 
+Al principio:
 ```JavaScript
+const { ProductsUtils } = require('./utils');
 ```
 
 ```JavaScript
+const generateReports = async( name, res) => {  // recibo el nombre del archivo y la respuesta como params
+  let products = await getAll();  // para tener todos mis productos
+  ProductsUtils.excelGenerator(products, name, res );
+}
+
+module.exports.ProductsServices = {
+  getAll,
+  getById,
+  create,
+  generateReports
+}
 ```
+
+Ahora debo implementarlo en controller.js
 
 ```JavaScript
+generateReport: (req, res) => {
+    try {
+      ProductsService.generateReport('Inventario', res);
+    } catch (error) {
+      debug(error);
+      Response.error(res);
+    }
+  }
 ```
 
+Y debo implementar el nuevo controlador en el archivo principal del mdulo (index.js).
 
+Si lo agrego al final de lo que ya tenia, como primero tengor mi GET por id a : **.get('/:id', ProductsController.generateReport)**, al agregar **.get('/report', ProductsController.generateReport)** me lo va a tomar como el parametro id, por eso es que invierto el orden
+
+```JavaScript
+module.exports.ProductsAPI = (app) => {
+  router
+    .get('/', ProductsController.getProducts)  // http://localhost:3000/api/products
+    .get('/report', ProductsController.generateReport)
+    .get('/:id', ProductsController.getProduct) // http://localhost:3000/api/products/23
+    .post('/', ProductsController.createProduct) // http://localhost:3000/api/products
+};
+```
+Y en **Postman** en Send cambio a **Send and Download** y nos pregunta done almacenar el archivo.
+
+Ahora me faltaría agregarle las cabeceras de las columnas.
+
+---
+
+## :star: Documentacion de Mongo DB
+
+**Docs** > **Drivers** > **NodeJS** -> y aca está toda la documentación.
+
+En la sección de ejemplos de uso :
+
+- find document
+
+- update document
+
+- delete document
+
+- create document
 
 ---
 

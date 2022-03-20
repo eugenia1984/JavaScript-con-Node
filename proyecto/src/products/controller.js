@@ -44,4 +44,44 @@ module.exports.ProductsController = {
       Response.error(res);
     }
   },
+  updateProduct: async (req, res) => {
+    try {
+      const { params: {id}} = req;
+      const { body } = req;
+      if (!body || Object.keys(body).length === 0) {
+        Response.error(res, new createError.BadRequest());
+      } else {
+        const productUpdated = await ProductsService.update(id, body);
+        if (!productUpdated) {
+          Response.error(res, new createError.NotFound());
+        } else {
+          Response.success(res, 200, 'Producto modificado', productUpdated);
+        }
+      }
+    } catch (error) {
+      debug(error);
+      Response.error(res);
+    }
+  },
+  deleteProduct: async (req, res) => {
+    try {
+      const productDeleted = await ProductsService.delete(id);
+      if (productDeleted === 0) {
+        Response.error(res, new createError.NotFound());
+      } else {
+        Response.success(res, 200, 'Producto eliminado', productDeleted);
+      } 
+    } catch (error) {
+      debug(error);
+      Response.error(res);
+    }
+  },
+  generateReport: (req, res) => {
+    try {
+      ProductsService.generateReport('Inventario', res);
+    } catch (error) {
+      debug(error);
+      Response.error(res);
+    }
+  }
 };
