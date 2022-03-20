@@ -1016,4 +1016,56 @@ En *.gitignore* : ```node_modules```
 
 Si en vez de pasarlo por git lo paso como archivos comprimidos, no voy a poner la carpeta de node_modules.
 
+El que lo baje va a tener que hacer en terminal: ```npm i ```
+
+- Agrego un nuevo modulo en el proyecto desde la carpeta **src**: **index** y tendra un archivo **index.js**.
+
+Si voy a Postman y quiero hacer el GET: ```http://localhost:3000``` o cualquier ruta que no sea la de **api/products** o **api/users** no se va a poder conectar, va a tener error.
+
+
+```JavaScript
+const { response } = require('express');
+const express = require('express');
+const createError = require('http-errors');
+
+const { Response} = require('../common/response');
+
+module.exports.IndexAPI = (app) => {
+  const router = express.Router();
+
+  router.get('/', (req, res) => {
+    const menu = {
+      products: `https://${req.header.host}/api/products`,
+      users: `https://${req.header.host}/api/users`
+    };
+    Response.success(res, 200, 'API Inventario', menu);
+  });
+
+  app.use('/', router);
+}
+
+// para gestionar las URL no encontradas
+module.exports.NotFoundAPI = (app) => {
+  const router = express.Router();
+
+  router.all('*', (req, res) => {
+    response.console.error(res, new createError.NotFound());
+  });
+
+  app.use('/', router);
+}
+```
+
+Voy al **index.js** de la raiz del proyecto y ariba agrego: **const { IndexAPI, NotFoundAPI} = require('./src/index/index');**
+
+Y los modulos me deben quedar en este orden:
+
+
+```JavaScript
+IndexAPI(app);
+ProductsAPI(app); 
+UsersAPI(app);
+NotFoundAPI(app);
+```
+
 --
