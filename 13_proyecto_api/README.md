@@ -942,6 +942,45 @@ En la sección de ejemplos de uso :
 
 ## :star: Modulo Usuarios
 
+Este modulo va a ser muchos cosas similares al modulo de producto, asi que nos podemos basar en lo que ya tenemos.
+
+En el **index.js** modifico que voy a trabajar con **module.exports.UsersAPI** y con **app.use('/api/users', router);** como la ruta de la URL. Y también modifico:
+
+- **const { UsersController } = require('./controller');**
+
+- En el **router** cambio a **UsersController** y todos los metodos get, update, etc, que sean de Users; borro el de report
+
+Me copio el controller.js de products y modifico:
+
+- **const debug = require('debug')('app:module-users-controller');**
+
+- Donde tengo ProductsController lo cambio a **UsersController**
+
+- en los noombres de los métodos cambio *Products* por **Users**
+
+- voy a usar **UsersService** en vez de ProductsService
+
+
+Me copio el service.js de products y modifico:
+
+- borro **const { ProductsUtils } = require('./utils');** porque no lo voy a necesitar
+
+- cambio la constante COLLECTION por **users**
+
+- borro la constante generateReport
+
+- cambio a **module.exports.UsersServices**
+
+
+### Implemento el modulo users en mi app
+
+Voy al index.js de mi raiz.
+
+Agrego **const ( UsersAPI ) = require('./src/users/index');** y **UsersAPI(app);**
+
+
+- En Postman realizo un par de request para ver que funcione
+
 ---
 
 # Tip:
