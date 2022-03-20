@@ -992,3 +992,18 @@ En el archivo **.env** por seguridad no expongo mi clave para acceder a la base 
 Donde se ve **aca_ingresar_password** hay que poner el passsword.
 
 ---
+
+Queda pendiente el **modulo de ventas**, donde se deberá estructurar:
+
+- index.js
+
+- controller.js
+
+- service.js
+
+Suponemos que la app permite hacer ventas de los productos existentes y por cada venta debe almacenar el registro de que usuario realizo la compra.
+
+Hay que ver el almacenamiento de referencias de una base de datos en Mongo DB, como consultar un documento con una referencia adentro, que pasa si quieren comprar una cantidad mayor de un producto de lo que hay.
+
+
+---
